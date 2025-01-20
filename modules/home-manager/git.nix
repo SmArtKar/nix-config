@@ -9,8 +9,10 @@
     enable = true;
     userName = "SmArtKar";
     userEmail = "master.of.bagets@gmail.com";
-
-    defaultBranch = "master";
+    
+    extraConfig = {
+      init.defaultBranch = "master";
+    };
   };
 
   programs.jujutsu = {
