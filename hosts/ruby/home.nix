@@ -1,4 +1,4 @@
-# home.nix
+#home.nix
 
 { config, pkgs, inputs, lib, ... }:
 
@@ -9,8 +9,8 @@
   [
     ./../../modules/home-manager/hyprland.nix
     inputs.anyrun.homeManagerModules.default
-    ./../../modules/home-manager/anyrun.nix
-    # ./../../modules/home-manager/rofi.nix
+    # ./../../modules/home-manager/anyrun.nix
+    ./../../modules/home-manager/rofi.nix
     ./../../modules/home-manager/git.nix
   ];
 

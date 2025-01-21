@@ -40,7 +40,9 @@
       # ----------
 
       "$terminal" = "kitty";
-      "$menu" = "anyrun";
+      "$menu" = "rofi -show combi";
+      "$fileManager" = "kitty -e yazi";
+      "$internetBrowser" = "firefox";
 
       # ---------
       #  General
@@ -84,8 +86,8 @@
       };
 
       dwindle = {
-        pseudotile = "yes";
-	preserve_split = "yes";
+        pseudotile = true;
+	preserve_split = true;
       };
 
       # ------------
@@ -113,10 +115,11 @@
       bind = [
         # Core binds
 	"$mod, Q, exec, $terminal"
+	"$mod, R, exec, $menu"
+	"$mod, B, exec, $internetBrowser"
+	"$mod, E, exec, $fileManager"
 	"$mod, C, killactive"
 	"$mod, M, exit"
-	"$mod, R, exec, $menu"
-	"$mod, B, exec, rofi -show combi"
 
         # Focus movement
 	"$mod, left, movefocus, l"
