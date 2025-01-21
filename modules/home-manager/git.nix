@@ -17,5 +17,9 @@
 
   programs.jujutsu = {
     enable = true;
+    settings = {
+      user.name = "SmArtKar";
+      user.email = "master.of.bagets@gmail.com";
+    };
   };
 }
