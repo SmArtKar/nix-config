@@ -9,6 +9,17 @@ let
 in {
   programs.rofi = {
     enable = true;
+    # Ugly as sin, but home does not support rofi-wayland so we need to redirect it manually
+    package = pkgs.rofi-wayland.overrideAttrs (_: rec {
+      version = "1.7.8+wayland1";
+      src = pkgs.fetchFromGitHub {
+        owner = "lbonn";
+        repo = "rofi";
+        rev = version;
+        sha256 = "sha256-fNRq4Iepuhcs0ADrMTyEsqr/wVHjFgjb2CAjYVxUWwo=";
+      };
+    });
+
     location = "center";
 
     extraConfig = {
@@ -18,6 +29,7 @@ in {
       case-sensitive = false;
       cycle = true;
       show-icons = true;
+      display-drun = "";
       monitor = "primary";
       steal-focus = true;
       
@@ -63,7 +75,7 @@ in {
       };
       */
       "*" = {
-        font = "Iosevka 12";
+        font = "Figtree 12";
 	g-spacing = mkLiteral "10px";
 	g-margin = mkLiteral "0px";
 	b-color = mkLiteral "#000000FF";
