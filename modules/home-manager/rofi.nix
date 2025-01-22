@@ -10,6 +10,7 @@ in {
   programs.rofi = {
     enable = true;
     # Ugly as sin, but home does not support rofi-wayland so we need to redirect it manually
+    /*
     package = pkgs.rofi-wayland.overrideAttrs (_: rec {
       version = "1.7.8+wayland1";
       src = pkgs.fetchFromGitHub {
@@ -19,7 +20,10 @@ in {
         sha256 = "sha256-fNRq4Iepuhcs0ADrMTyEsqr/wVHjFgjb2CAjYVxUWwo=";
       };
     });
+    */
 
+    package = pkgs.rofi-wayland;
+    
     location = "center";
 
     extraConfig = {
@@ -29,6 +33,7 @@ in {
       case-sensitive = false;
       cycle = true;
       show-icons = true;
+      display-combi = "";
       display-drun = "";
       monitor = "primary";
       steal-focus = true;
@@ -60,22 +65,8 @@ in {
     };
     
     theme = {
-      /*
       "*" = {
-        background = "#222222";
-        foreground = "#F2F2F2";
-        lightbg = "#161616";
-        lightfg = "#F2F2F2";
-        blue = "#aadb0f";
-      };
-      window = {
-        border = 6;
-        y-offset = -6;
-        border-color = "#aadb0f";
-      };
-      */
-      "*" = {
-        font = "Figtree 12";
+        font = "Iosevka Nerd Font";
 	g-spacing = mkLiteral "10px";
 	g-margin = mkLiteral "0px";
 	b-color = mkLiteral "#000000FF";
@@ -90,8 +81,18 @@ in {
 	w-border = mkLiteral "2px solid";
 	w-border-color = mkLiteral "#FFFFFFFF";
 	w-padding = mkLiteral "12px";
+        transparency = "real";
       };
 
+      window = {
+	width = mkLiteral "450px";
+	border-radius = mkLiteral "@b-radius";
+	background-color = mkLiteral "@wbg-color";
+	border = mkLiteral "@w-border";
+	border-color = mkLiteral "@w-border-color";
+	padding = mkLiteral "@w-padding";
+      };
+      
       listview = {
         columns = 1;
 	lines = 7;
@@ -102,15 +103,7 @@ in {
 	border = mkLiteral "0px solid";
       };
 
-      window = {
-        transparency = "real";
-	width = mkLiteral "450px";
-	border-radius = mkLiteral "@b-radius";
-	background-color = mkLiteral "@wbg-color";
-	border = mkLiteral "@w-border";
-	border-color = mkLiteral "@w-border-color";
-	padding = mkLiteral "@w-padding";
-      };
+      /*
 
       prompt = {
         text-color = mkLiteral "@fg-color";
@@ -169,6 +162,7 @@ in {
         background-color = mkLiteral "red";
 	border = mkLiteral "0px solid";
       };
+      */
     };
   };
 }

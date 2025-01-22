@@ -2,19 +2,22 @@
 
 { pkgs, inputs, lib, ... }:
 
-# Hyprland WM - requires kitty.nix to function
+# Hyprland WM
 
 {
   imports = 
   [
+    # Kitty is required by default
     ./kitty.nix
+    # Notification daemon
+    ./mako.nix
   ];
   
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       exec-once = [
-        "hyprctl setcursor Vimix 24"
+	"mako"
       ];
 
       # --------
@@ -40,7 +43,7 @@
       # ----------
 
       "$terminal" = "kitty";
-      "$menu" = "rofi -show combi";
+      "$menu" = "rofi -show drun";
       "$fileManager" = "kitty -e yazi";
       "$internetBrowser" = "firefox";
 
@@ -158,6 +161,17 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     # Hints electron apps to use wayland
     NIXOS_OZONE_WL = "1";
+    # Firefox should also run on wayland
+    MOZ_ENABLE_WAYLAND = "1";
+    MOZ_WEBRENDER = "1";
+    # Correct java execution
+    _JAVA_AWT_WM_NOREPARENTING = "1";
+    # QT styling and wayland
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORM = "wayland";
+    # Drivers
+    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland";
   };
 }
 

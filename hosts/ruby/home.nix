@@ -18,7 +18,7 @@
   home.homeDirectory = "/home/smartkar";
 
   home.stateVersion = "24.05";
-
+  
   home.packages = with pkgs; [
     wget
     neovim
@@ -34,15 +34,29 @@
     vistafonts
     cascadia-code
     dina-font
-    nerdfonts
-    fira-code
     fira-code-symbols
-    iosevka
+
+    (nerdfonts.override { fonts = [
+      "0xproto"
+      "DroidSansMono"
+      "Agave"
+      "Arimo"
+      "DroidSansM"
+      "FiraCode"
+      "FiraMono"
+      "Inconsolata"
+      "Iosevka"
+      "JetBrainsMono"
+      "Noto"
+      "Ubuntu"
+      "UbuntuMono"
+      "UbuntuSans"
+    ]; })
 
     # --------
     #  Themes
     # --------
-
+  
   ];
 
   home.file = {

@@ -130,6 +130,9 @@
     users = {
       smartkar = import ./home.nix;
     };
+    sharedModules = [{
+      #stylix.targets.xyz.enable = false;
+    }];
   };
 
   # Open ports in the firewall.
@@ -137,7 +140,23 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+ 
   system.stateVersion = "24.11";
+  
+  # Automatic updating
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
 
+  # Automatic cleanup
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 10d";
+  };
+  nix.settings.auto-optimise-store = true;
+
+  #stylix.enable = true;
+  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 }
