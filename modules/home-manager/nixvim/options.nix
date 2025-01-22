@@ -1,9 +1,3 @@
-# nixvim/options.nix
-
-{ pkgs, inputs, lib, ... }:
-
-# Nixvim core options
-
 {
   programs.nixvim = {
     # Use system clipboard for convinience

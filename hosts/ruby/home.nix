@@ -19,16 +19,15 @@
   home.homeDirectory = "/home/smartkar";
 
   home.stateVersion = "24.05";
-  
+
   home.packages = with pkgs; [
     wget
-    # neovim
     fastfetch
 
     # -------------------
     #  Font Installation
     # -------------------
-    
+
     noto-fonts
     noto-fonts-emoji
     corefonts
@@ -53,7 +52,7 @@
     # --------
     #  Themes
     # --------
-  
+
   ];
 
   home.file = {
@@ -63,7 +62,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-  
+
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
 }

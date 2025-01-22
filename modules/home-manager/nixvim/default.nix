@@ -1,4 +1,4 @@
-# nixvim/default.nix
+# nixvim
 
 { pkgs, inputs, lib, ... }:
 
@@ -8,6 +8,10 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./options.nix
+    ./autocommands.nix
+    ./highlights.nix
+    ./autocomplete.nix
+    ./plugins
   ];
   
   programs.nixvim = {
@@ -32,8 +36,5 @@
     viAlias = true;
     vimAlias = true;
     luaLoader.enable = true;
-
-    colorschemes.tokyonight.enable = true;
-    plugins.lualine.enable = true;
   };
 }
