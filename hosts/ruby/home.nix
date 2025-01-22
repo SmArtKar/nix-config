@@ -8,10 +8,11 @@
   imports =
   [
     ./../../modules/home-manager/hyprland.nix
-    inputs.anyrun.homeManagerModules.default
-    # ./../../modules/home-manager/anyrun.nix
     ./../../modules/home-manager/rofi.nix
     ./../../modules/home-manager/git.nix
+    ./../../modules/home-manager/stylix.nix
+
+    ./../../modules/home-manager/nixvim
   ];
 
   home.username = "smartkar";
@@ -21,7 +22,7 @@
   
   home.packages = with pkgs; [
     wget
-    neovim
+    # neovim
     fastfetch
 
     # -------------------
@@ -35,23 +36,19 @@
     cascadia-code
     dina-font
     fira-code-symbols
-
-    (nerdfonts.override { fonts = [
-      "0xproto"
-      "DroidSansMono"
-      "Agave"
-      "Arimo"
-      "DroidSansM"
-      "FiraCode"
-      "FiraMono"
-      "Inconsolata"
-      "Iosevka"
-      "JetBrainsMono"
-      "Noto"
-      "Ubuntu"
-      "UbuntuMono"
-      "UbuntuSans"
-    ]; })
+    nerd-fonts._0xproto
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.agave
+    nerd-fonts.arimo
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.inconsolata
+    nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.noto
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-mono
+    nerd-fonts.ubuntu-sans
 
     # --------
     #  Themes

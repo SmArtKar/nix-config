@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./../../modules/nixos/stylix.nix
     ];
 
   # Bootloader.
@@ -72,7 +73,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -93,7 +94,7 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
+      # thunderbird
     ];
   };
 
@@ -130,9 +131,6 @@
     users = {
       smartkar = import ./home.nix;
     };
-    sharedModules = [{
-      #stylix.targets.xyz.enable = false;
-    }];
   };
 
   # Open ports in the firewall.
@@ -156,7 +154,4 @@
     options = "--delete-older-than 10d";
   };
   nix.settings.auto-optimise-store = true;
-
-  #stylix.enable = true;
-  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 }

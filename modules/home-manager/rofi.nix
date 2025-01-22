@@ -64,6 +64,7 @@ in {
       run-display-format = "{name}";
     };
     
+    /*
     theme = {
       "*" = {
         font = "Iosevka Nerd Font";
@@ -163,6 +164,6 @@ in {
 	border = mkLiteral "0px solid";
       };
       */
-    };
+    # };
   };
 }

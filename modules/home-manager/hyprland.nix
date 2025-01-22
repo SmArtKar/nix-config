@@ -76,7 +76,7 @@
            enabled = true;
 	   range = 4;
 	   render_power = 3;
-	   color = "rgba(00000099)";
+	   # color = "rgba(00000099)";
 	 };
 
 	 blur = {
@@ -152,6 +152,10 @@
 	"$mod, mouse:272, movewindow"
 	"$mod, mouse:273, resizewindow"
 	"$mod ALT, mouse:272, resizewindow"
+      ];
+      
+      windowrule = [
+
       ];
     };
   };
