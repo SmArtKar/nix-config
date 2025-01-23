@@ -4,9 +4,14 @@
 
 {
   imports = [
+    ./barbar.nix
     ./lualine.nix
-    #./telescope.nix
-    #./treesitter.nix
+    ./lsp.nix
+    ./telescope.nix
+    ./treesitter.nix
+    ./neorg.nix
+    ./neotree.nix
+    ./starify.nix
   ];
 
   programs.nixvim = {
@@ -24,7 +29,10 @@
 
       colorizer = {
         enable = true;
-        settings.user_default_options.names = false;
+        settings = {
+          mode = "foreground";
+          user_default_options.names = false;
+        };
       };
 
       oil = {
@@ -32,17 +40,23 @@
         lazyLoad.settings.cmd = "Oil";
       };
 
-      trim = {
+      comment = {
         enable = true;
         settings = {
-          highlight = true;
-          ft_blocklist = [
-            "checkhealth"
-            "floaterm"
-            "lspinfo"
-            "neo-tree"
-            "TelescopePrompt"
-          ];
+          opleader.line = "<C-b>";
+          toggler.line = "<C-b>";
+        };
+      };
+
+      indent-blankline.enable = true;
+
+      floaterm = {
+        enable = true;
+        settings = {
+          width = 0.8;
+          height = 0.8;
+          title = "";
+          keymap_toggle = "<C-`>";
         };
       };
     };

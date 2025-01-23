@@ -24,11 +24,11 @@
       byteCompileLua.enable = true;
       combinePlugins = {
         enable = true;
-	standalonePlugins = [
-	  "hmts.nvim"
-	  "neorg"
-	  "nvim-treesitter"
-	];
+	      standalonePlugins = [
+	        "hmts.nvim"
+          "neorg"
+	        "nvim-treesitter"
+	      ];
       };
     };
     

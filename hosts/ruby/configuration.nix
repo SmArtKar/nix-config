@@ -52,12 +52,12 @@
   # Enable the K Desktop Environment
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
-      
+
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
-  
+
   # Hyprland package needs to be enabled in config for mandatory components, actual config is done via home
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
@@ -122,10 +122,10 @@
       PermitRootLogin = "no";
     };
   };
-  
+
   services.flatpak.enable = true;
   nixpkgs.config.allowUnfree = true;
-  
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
@@ -138,9 +138,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
- 
+
   system.stateVersion = "24.11";
-  
+
   # Automatic updating
   system.autoUpgrade = {
     enable = true;
