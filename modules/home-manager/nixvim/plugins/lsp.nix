@@ -29,7 +29,7 @@
       servers = {
         harper_ls = {
           enable = true;
-          extraOptions = {
+          settings = {
             spell_check = false;
             avoid_curses = false; # we reclaim slurs in this house
             sentence_capitalization = false;

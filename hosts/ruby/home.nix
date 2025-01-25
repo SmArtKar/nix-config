@@ -7,11 +7,12 @@
 {
   imports =
   [
-    ./../../modules/home-manager/hyprland.nix
+    ./../../modules/home-manager/core.nix
     ./../../modules/home-manager/rofi.nix
     ./../../modules/home-manager/git.nix
     ./../../modules/home-manager/stylix.nix
 
+    ./../../modules/home-manager/hyprland
     ./../../modules/home-manager/nixvim
   ];
 
@@ -21,8 +22,6 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
-    wget
-    fastfetch
 
     # -------------------
     #  Font Installation
@@ -66,3 +65,4 @@
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
 }
+

@@ -5,12 +5,12 @@
 # Kitty configuration - required by hyprland
 
 {
+  imports = [
+    ./shell
+  ];
+
   programs.kitty = {
     enable = true;
-    font = {
-      # name = "JetBrainsMono Nerd Font";
-      # size = 13;
-    };
 
     # Keybinding consistency with other emulators
     keybindings = {
@@ -19,7 +19,6 @@
     };
 
     settings = {
-      # background_opacity = "0.93";
       enable_audio_bell = false;
       tab_bar_edge = "top";
     };

@@ -4,18 +4,20 @@
 
 # Stylix style manager - core module, some additional stuff is in home-manager modules file
 
-{
-  stylix = {
-    enable = true;
-    autoEnable = true;
-    
-    image = pkgs.fetchurl {
+let
+  theme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
+  wallpaper = pkgs.fetchurl {
       url = "https://github.com/Lalit64/dotfiles/blob/main/home/lalit/modules/wallpapers/catppuccin-fauna.png?raw=true";
       sha256 = "sha256-4nFo0PPlESqoFWZhEtA9JvFnOChOIxxcZq/FqiYNfCw=";
     };
+in {
+  stylix = {
+    enable = true;
+    autoEnable = true; 
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
     polarity = "dark";
+    base16Scheme = theme;
+    image = wallpaper;
 
     opacity = {
       applications = 1.0;
