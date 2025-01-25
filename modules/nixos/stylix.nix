@@ -29,5 +29,29 @@ in {
     targets = {
 
     };
+
+    fonts = {
+      /*
+      serif = {
+        package = pkgs.nerd-fonts.inconsolata;
+        name = "Inconsolata Nerd Font";
+      };
+
+      sansSerif = {
+        package = pkgs.nerd-fonts.arimo;
+        name = "Arimo Nerd Font";
+      };
+      */
+
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
   };
 }

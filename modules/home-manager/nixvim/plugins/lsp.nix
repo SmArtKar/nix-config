@@ -28,7 +28,7 @@
 
       servers = {
         harper_ls = {
-          enable = true;
+          #enable = true;
           settings = {
             spell_check = false;
             avoid_curses = false; # we reclaim slurs in this house
@@ -40,6 +40,7 @@
         };
         cssls.enable = true;
         texlab.enable = true;
+        nixd.enable = true;
       };
     };
   }; 

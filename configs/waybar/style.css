@@ -1,0 +1,66 @@
+* {
+  font-size: 12pt;
+  font-weight: bold;
+  border-radius: 8px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar {
+  background-color: transparent;
+  border: none;
+}
+
+window>box {
+  margin: 5px 5px 0px 5px;
+  border: none;
+}
+
+/* Workspaces */
+
+#workspaces button {
+  background-color: @base00;
+  padding: 2px 6px 2px 6px;
+  margin-right: 4px;
+  border: 2px solid transparent;
+}
+
+#workspaces button.active {
+  background-color: @base01;
+  border: 2px solid @base05;
+}
+
+#workspaces button.urgent {
+  color: @base00;
+  background-color: @base08;
+  font-weight: bolder;
+}
+
+/* Elements */
+
+#temperature,
+#mpd,
+#pulseaudio,
+#network,
+#battery,
+#language,
+#clock,
+#tray {
+  background-color: @base00;
+  border: 2px solid @base05;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
+
+#idle_inhibitor {
+  background-color: @base00;
+  border: 2px solid @base05;
+  padding: 2px 5px 2px 6px;
+  margin-right: 4px;
+}
+
+tooltip {
+  background: alpha(@base00, 0.9);
+  /* Lavender in catpuccin, replace with @secondary */
+  border: 3px solid @base07;
+}

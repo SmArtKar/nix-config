@@ -11,6 +11,8 @@
     ./../kitty.nix
     # Notification daemon
     ./../mako.nix
+
+    ./waybar.nix
   ];
   
   wayland.windowManager.hyprland = {
@@ -18,7 +20,7 @@
     settings = {
       exec-once = [
         "mako"
-        "waybar --bar main-bar --log-level error"
+        "waybar --bar main --log-level error"
       ]; 
 
       # --------
@@ -180,6 +182,11 @@
       windowrule = [
 
       ];
+    };
+    
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
     };
   };
 

@@ -6,6 +6,8 @@
 
 {
   stylix.targets = {
-    neovim.enable = true;
+    nixvim.enable = true;
+    btop.enable = true;
+    waybar.enable = false;
   };
 }
