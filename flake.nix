@@ -1,5 +1,4 @@
 # flake.nix
-
 {
   description = "NixOS Config Flake";
 
@@ -36,6 +35,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    nixcord.url = "github:kaylorben/nixcord";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -43,7 +44,6 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
     };
   in
   {
@@ -58,7 +58,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
           }
-	];
+	      ];
       };
     };
   };

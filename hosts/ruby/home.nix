@@ -14,6 +14,9 @@
 
     ./../../modules/home-manager/hyprland
     ./../../modules/home-manager/nixvim
+
+    ./../../modules/home-manager/desktop/telegram.nix
+    ./../../modules/home-manager/desktop/discord.nix
   ];
 
   home.username = "smartkar";

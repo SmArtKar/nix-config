@@ -4,11 +4,7 @@
   border-radius: 8px;
   transition-property: background-color;
   transition-duration: 0.5s;
-}
-
-window#waybar {
   background-color: transparent;
-  border: none;
 }
 
 window>box {
@@ -38,6 +34,13 @@ window>box {
 
 /* Elements */
 
+#window {
+  background-color: @base00;
+  border: 2px solid @base05;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
+
 #temperature,
 #mpd,
 #pulseaudio,
@@ -50,13 +53,15 @@ window>box {
   border: 2px solid @base05;
   padding: 2px 10px 2px 10px;
   margin-right: 4px;
+  border-radius: 4px 16px 4px 16px;
 }
 
 #idle_inhibitor {
   background-color: @base00;
   border: 2px solid @base05;
-  padding: 2px 5px 2px 6px;
+  padding: 2px 7px 2px 8px;
   margin-right: 4px;
+  border-radius: 4px 16px 4px 16px;
 }
 
 tooltip {

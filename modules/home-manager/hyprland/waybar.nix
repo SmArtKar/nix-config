@@ -59,10 +59,11 @@ in {
       #height = 24;
 
       modules-left = [
-        #"backlight"
+        # "backlight"
         "custom/launcher"
-        "temperature"
+        # "temperature"
         "hyprland/workspaces"
+        "hyprland/window"
       ];
 
       modules-center = [
@@ -75,9 +76,9 @@ in {
         "network"
         "battery"
         "idle_inhibitor"
+        "tray"
         "hyprland/language"
         "clock"
-        "tray"
       ];
 
       "hyprland/workspaces" = {
@@ -85,7 +86,13 @@ in {
       };
 
       "hyprland/window" = {
-        format = "{}";
+        format = "{initialTitle}";
+        rewrite = {
+          "kitty" = "󰄛 Kitty";
+          "Mozilla Firefox" = "󰈹 Firefox";
+          "Telegram" = " Telegram";
+          "Discord" = " Discord";
+        };
       };
 
       temperature = {
@@ -148,7 +155,7 @@ in {
         format = "{icon}";
         format-icons = {
           activated = " ";
-          deactivated = "󰒲 ";
+          deactivated = " ";
         };
         tooltip = false;
       };
@@ -156,7 +163,7 @@ in {
       clock = {
         interval = 60;
         format = " {:%H:%M}";
-        format-alt = " {:%a %b %d, %G}";
+        format-alt = " {:%H:%M, :%a, :%b %d, %G}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
