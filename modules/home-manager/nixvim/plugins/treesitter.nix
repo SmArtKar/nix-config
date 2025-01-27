@@ -17,7 +17,7 @@
         highlightDefinitions = {
         enable = true;
         clearOnCursorMove = false; # We update too frequently
-      };
+        };
       };
 
     hmts.enable = true;

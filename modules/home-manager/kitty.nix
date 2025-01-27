@@ -16,6 +16,10 @@
     keybindings = {
       "ctrl+shift+m" = "toggle_maximized";
       "ctrl+shift+f" = "show_scrollback"; # Search in current window
+      "ctrl+enter" = "send_text normal,application \x1b[13;5u";
+      "shift+enter" = "send_text normal,application \x1b[13;2u";
+      "ctrl+tab" = "send_text normal,application \x1b[9;5u";
+      "ctrl+shift+tab" = "send_text normal,application \x1b[9;6u";
     };
 
     settings = {

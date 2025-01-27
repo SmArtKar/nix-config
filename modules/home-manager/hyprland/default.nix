@@ -15,6 +15,10 @@
     ./waybar.nix
   ];
   
+  home.packages = with pkgs; [
+    hyprshot
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -134,7 +138,7 @@
 
         # Screenshots
         ", Print, exec, hyprshot -m output -o ~/Pictures/Screenshots -- imv"
-        "$mod, Print, exec, hyprshot -m window -o ~/Pictures/Screenshots -- imv"
+        "SHIFT, Print, exec, hyprshot -m window -o ~/Pictures/Screenshots -- imv"
         "CTRL, Print, exec, hyprshot -m region -o ~/Pictures/Screenshots --imv"
 
         # Focus movement
@@ -157,8 +161,8 @@
 
         # Workspace scrolling
 
-	      "$mod, mouse_down, workspace, e+1"
-	      "$mod, mouse_up, workspace, e-1"
+	      "$mod, mouse_up, workspace, e+1"
+	      "$mod, mouse_down, workspace, e-1"
       ]
       ++ (
         # Workspace binds

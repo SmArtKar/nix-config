@@ -5,6 +5,7 @@
   transition-property: background-color;
   transition-duration: 0.5s;
   background-color: transparent;
+  color: @base07;
 }
 
 window>box {
@@ -39,6 +40,15 @@ window>box {
   border: 2px solid @base05;
   padding: 2px 10px 2px 10px;
   margin-right: 4px;
+}
+
+#custom-launcher {
+  background-color: @base00;
+  border: 2px solid @base05;
+  padding: 0px 2px 0px 5px;
+  margin-right: 4px;
+  color: @base0D;
+  font-size: 14pt;
 }
 
 #temperature,

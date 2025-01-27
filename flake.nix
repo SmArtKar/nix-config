@@ -5,12 +5,10 @@
   # Only affects the flake, need to add anyrun's cachix server
   nixConfig = {
     extra-substituters = [
-      # "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
     ];
 
     extra-trusted-public-keys = [
-      # "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
@@ -37,6 +35,11 @@
     };
     
     nixcord.url = "github:kaylorben/nixcord";
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -50,9 +53,9 @@
     nixosConfigurations = {
       ruby = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system; };
-	modules = [
-	  # Stylix imported in master flake for bootloader access
-	  inputs.stylix.nixosModules.stylix
+	      modules = [
+	        # Stylix imported in master flake for bootloader access
+	        inputs.stylix.nixosModules.stylix
           ./hosts/ruby/configuration.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;

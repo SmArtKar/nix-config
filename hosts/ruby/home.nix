@@ -11,12 +11,14 @@
     ./../../modules/home-manager/rofi.nix
     ./../../modules/home-manager/git.nix
     ./../../modules/home-manager/stylix.nix
+    ./../../modules/home-manager/mpd.nix
 
     ./../../modules/home-manager/hyprland
     ./../../modules/home-manager/nixvim
 
     ./../../modules/home-manager/desktop/telegram.nix
     ./../../modules/home-manager/desktop/discord.nix
+    ./../../modules/home-manager/desktop/spotify.nix
   ];
 
   home.username = "smartkar";

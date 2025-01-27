@@ -71,15 +71,20 @@ in {
       ];
 
       modules-right = [
-        "mpd"
+        # "mpd"
         "pulseaudio"
         "network"
         "battery"
         "idle_inhibitor"
         "tray"
-        "hyprland/language"
+        #"hyprland/language"
         "clock"
       ];
+
+      "custom/launcher" = {
+        format = " ";
+        tooltip = false;
+      };
 
       "hyprland/workspaces" = {
         all-outputs = true;
@@ -92,6 +97,7 @@ in {
           "Mozilla Firefox" = "󰈹 Firefox";
           "Telegram" = " Telegram";
           "Discord" = " Discord";
+          "Spotify.*" = " Spotify";
         };
       };
 
@@ -100,6 +106,28 @@ in {
         format = " {temperatureC}°C";
         format-critical = " {temperatureC}°C";
         tooltip = false;
+      };
+
+      mpd = {
+        interval = 2;
+        unknown-tag = "N/A";
+        format = "{stateIcon} {artist} - {title}";
+        format-disconnected = "󱘖 Disconnected";
+        format-paused = "{stateIcon} {artist} - {title}";
+        format-stopped = "Stopped  ";
+        state-icons = {
+          playing = " ";
+          paused = " ";
+        };
+        tooltip-format = "MPD (connected)";
+        tooltip-format-disconnected = "MPD (disconnected)";
+        on-click = "mpc toggle";
+        on-click-middle = "mpc prev";
+        on-click-right = "mpc next";
+        on-update = "";
+        on-scroll-up = "mpc seek +00:00:01";
+        on-scroll-down = "mpc seek -00:00:01";
+        smooth-scrolling-threshold = 1;
       };
 
       pulseaudio = {
@@ -163,7 +191,7 @@ in {
       clock = {
         interval = 60;
         format = " {:%H:%M}";
-        format-alt = " {:%H:%M, :%a, :%b %d, %G}";
+        format-alt = " {:%H:%M, %a %b %d, %G}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
