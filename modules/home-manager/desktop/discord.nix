@@ -15,10 +15,10 @@
     config = {
       frameless = true;
       transparent = true;
-      enabledThemes = [
-        "stylix"
+      themeLinks = [
+        "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
       ];
-
+      
       plugins = {
         accountPanelServerProfile.enable = true;
         alwaysAnimate.enable = true;
@@ -47,7 +47,7 @@
         messageLinkEmbeds.enable = true;
         noBlockedMessages.enable = true;
         noSystemBadge.enable = true;
-        noTypingAnimation.enable = true;
+        # noTypingAnimation.enable = true;
         noUnblockToJump.enable = true;
         onePingPerDM.enable = true;
         openInApp.enable = true;

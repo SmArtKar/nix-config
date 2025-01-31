@@ -51,6 +51,13 @@ window>box {
   font-size: 14pt;
 }
 
+#custom-playerctl {
+  background-color: @base00;
+  border: 2px solid @base05;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
+
 #temperature,
 #mpd,
 #pulseaudio,

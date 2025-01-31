@@ -56,8 +56,93 @@
   programs.fastfetch = {
     enable = true;
     settings = {
+      display = {
+        separator = " ";
+      };
+
       modules = [
-        
+        "break"
+	      "break"
+	      {
+          "type" = "title";
+          "keyWidth" = 10;
+        }
+        "break"
+        {
+          "type" = "os";
+          "key" = " ";
+          "keyColor" = "34";
+        }
+        {
+          "type" = "kernel";
+          "key" = " ";
+          "keyColor" = "34";
+        }
+        {
+          "type" = "terminal";
+          "key" = " ";
+          "keyColor" = "34"; 
+        }
+        {
+          "type" = "shell";
+          "key" = " ";
+          "keyColor" = "34"; 
+        }
+        {
+          "type" = "terminalfont";
+          "key" = " ";
+          "keyColor" = "34";
+        }
+        "break"
+        {
+          "type" = "wm";
+          "key" = " ";
+          "keyColor" = "34";
+        }
+        {
+          "type" = "uptime";
+          "key" = " ";
+          "keyColor" = "34"; 
+        }
+        {
+          "type" = "command";
+          "key" = "󱦟 ";
+          "keyColor" = "34";
+          "text" = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+        }
+        {
+          "type" = "datetime";
+          "format" = "{1}-{3}-{11}";
+          "key" = " ";
+          "keyColor" = "34";
+        }
+        {
+          "type" = "media";
+          "key" = "󰝚 ";
+          "keyColor" = "34";
+        }
+        "break"
+        {
+          "type" = "cpu";
+          "key" = " ";
+          "keyColor" = "blue";
+        }
+        {
+          "type" = "gpu";
+          "key" = " ";
+          "keyColor" = "blue";
+        }
+        {
+          "type" = "memory";
+          "key" = " ";
+          "keyColor" = "blue";
+        }
+        {
+          type = "disk";
+          key = "󱛟 ";
+          keyColor = "blue";
+        }
+        "break"
       ];
     };
   };

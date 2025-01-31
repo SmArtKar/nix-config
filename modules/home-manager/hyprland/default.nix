@@ -9,8 +9,8 @@
   [
     # Kitty is required by default
     ./../kitty.nix
-    # Notification daemon
-    ./../mako.nix
+    # Daemons and utilities
+    ./packages.nix
 
     ./waybar.nix
   ];
@@ -54,7 +54,7 @@
       # ----------
 
       "$terminal" = "kitty";
-      "$menu" = "rofi -show drun";
+      "$menu" = "rofi -show combi";
       "$fileManager" = "kitty -e yazi";
       "$browser" = "firefox";
 
@@ -135,6 +135,7 @@
         "$mod, F, fullscreen"
         "$mod, S, pseudo"
         "$mod, Space, togglefloating"
+        "$mod, P, exec, pkill waybar || waybar --bar main"
 
         # Screenshots
         ", Print, exec, hyprshot -m output -o ~/Pictures/Screenshots -- imv"
@@ -184,7 +185,21 @@
       ];
       
       windowrule = [
+        "float, yad"
+        "float, pavucontrol"
+        "float, qt5ct"
+        "float, feh|imv|Gpicview"
+        "float, qemu"
 
+        "float, wlogout"
+        "move 0 0, wlogout"
+        "size 100% 100% wlogout"
+        "animation slide, wlogout"
+
+        "workspace 4, Discord"
+        "workspace 5, Telegram"
+        "workspace 6, Spotify"
+        "workspace 7, yazi"
       ];
     };
     

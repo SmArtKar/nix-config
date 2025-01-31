@@ -56,10 +56,8 @@ in {
       output = [
         "DP-1"
       ];
-      #height = 24;
 
       modules-left = [
-        # "backlight"
         "custom/launcher"
         # "temperature"
         "hyprland/workspaces"
@@ -67,7 +65,7 @@ in {
       ];
 
       modules-center = [
-        #"custom/playerctl"
+        "custom/playerctl"
       ];
 
       modules-right = [
@@ -77,17 +75,26 @@ in {
         "battery"
         "idle_inhibitor"
         "tray"
-        #"hyprland/language"
+        "hyprland/language"
         "clock"
       ];
 
       "custom/launcher" = {
         format = " ";
         tooltip = false;
+        on-click = "exec rofi -show combi";
+        on-click-middle = "exec default_wall";
+        on-click-right = "exec wallpaper_random";
       };
 
       "hyprland/workspaces" = {
         all-outputs = true;
+        persistent_workspaces = {
+          "1" = [];
+          "2" = [];
+          "3" = [];
+          "4" = [];
+        };
       };
 
       "hyprland/window" = {
@@ -98,6 +105,20 @@ in {
           "Telegram" = " Telegram";
           "Discord" = " Discord";
           "Spotify.*" = " Spotify";
+        };
+      };
+
+      "custom/playerctl" = {
+        format = "{icon}<span>{}</span>";
+        return-type = "json";
+        max-length = 55;
+        exec = "playerctl -a metadata --format '{\"text\": \"  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        on-click = "playerctl play-pause";
+        on-click-middle = "playerctl previous";
+        on-click-right = "playerctl next";
+        format-icons = {
+          "Paused" = "<span foreground='#6dd9d9'></span>";
+          "Playing" = "<span foreground='#82db97'></span>";
         };
       };
 
@@ -146,8 +167,8 @@ in {
           car = " ";
           default = [ " " " " " " ];
         };
-        on-click = "amixer set Master toggle";
-        on-click-right = "pavucontrol";
+        on-click = "pavucontrol";
+        on-click-right = "amixer set Master toggle";
         smooth-scrolling-threshold = 1;
       };
 
@@ -186,6 +207,11 @@ in {
           deactivated = " ";
         };
         tooltip = false;
+      };
+
+      "hyprland/language" = {
+        "format-en" = "En";
+        "format-ru" = "Ru";
       };
 
       clock = {
