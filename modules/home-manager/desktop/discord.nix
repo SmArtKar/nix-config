@@ -8,17 +8,25 @@
   imports = [
     inputs.nixcord.homeManagerModules.nixcord
   ];
+  
+  home.packages = with pkgs; [
+    #vesktop
+  ];
 
   programs.nixcord = {
     enable = true;
-    
+    discord.vencord.unstable = true;
     config = {
       frameless = true;
       transparent = true;
       themeLinks = [
-        "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
+        #"https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
+        "https://raw.githubusercontent.com/xcruxiex/themes/refs/heads/master/themes-cores/nocturnal.css"
       ];
-      
+      enabledThemes = [
+        #"stylix.theme.css"
+      ];
+
       plugins = {
         accountPanelServerProfile.enable = true;
         alwaysAnimate.enable = true;
@@ -41,7 +49,7 @@
         fakeProfileThemes.enable = true;
         fixCodeblockGap.enable = true;
         fixSpotifyEmbeds.enable = true;
-        fixYoutubeEmbeds.enable = true;
+        fixYoutubeEmbeds  .enable = true;
         forceOwnerCrown.enable = true;
         gameActivityToggle.enable = true;
         messageLinkEmbeds.enable = true;

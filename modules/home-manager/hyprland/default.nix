@@ -57,6 +57,7 @@
       "$menu" = "rofi -show combi";
       "$fileManager" = "kitty -e yazi";
       "$browser" = "firefox";
+      "$logout" = "wlogout";
 
       # ---------
       #  General
@@ -131,7 +132,7 @@
 	      "$mod, B, exec, $browser"
 	      "$mod, E, exec, $fileManager"
 	      "$mod, C, killactive"
-	      "$mod, X, exit"
+	      "$mod, X, exec, $logout"
         "$mod, F, fullscreen"
         "$mod, S, pseudo"
         "$mod, Space, togglefloating"
@@ -186,20 +187,27 @@
       
       windowrule = [
         "float, yad"
-        "float, pavucontrol"
+        "float, .*pavucontrol"
         "float, qt5ct"
         "float, feh|imv|Gpicview"
         "float, qemu"
+        "float, .*nmtui"
+        "float, nm-connection-editor"
 
         "float, wlogout"
         "move 0 0, wlogout"
         "size 100% 100% wlogout"
         "animation slide, wlogout"
 
-        "workspace 4, Discord"
-        "workspace 5, Telegram"
-        "workspace 6, Spotify"
-        "workspace 7, yazi"
+        "workspace 4, .*[dD]iscord.*"
+        "workspace 5, .*[tT]elegram.*"
+        "workspace 6, .*[sS]potify.*"
+        "workspace 7, .*[yY]azi.*"
+      ];
+
+      workspace = [
+        "r[1-5], monitor:DP-1"
+        "r[6-10], monitor:eDP-1"
       ];
     };
     

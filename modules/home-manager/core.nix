@@ -27,6 +27,7 @@
     croc # File transfer
     caddy # Webserver
     lutgen # Background themer
+    yq # YAML/TOML processing
 
     # Nix tooling
     nix-index

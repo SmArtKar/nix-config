@@ -64,7 +64,7 @@ $env.config = {
     external: {
       enable: true
       max_results: 100
-      completer: $multiple_completers # See nushell.nix
+      #completer: $multiple_completers # See nushell.nix
     }
   }
 

@@ -28,8 +28,8 @@ in {
   };
 
   programs.carapace = {
-    enable = true;
-    enableBashIntegration = true;
-    enableNushellIntegration = true;
+    #enable = true;
+    #enableBashIntegration = true;
+    #enableNushellIntegration = true;
   };
 }

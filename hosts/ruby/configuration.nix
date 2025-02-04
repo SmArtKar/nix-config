@@ -116,6 +116,11 @@
     enableSSHSupport = true;
   };
 
+  # Enable bluetooth and bluetooth controls
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh = {

@@ -54,11 +54,13 @@ in {
       layer = "top";
       position = "top";
       output = [
+        "eDP-1"
         "DP-1"
       ];
 
       modules-left = [
-        "custom/launcher"
+        #"custom/launcher"
+        "group/launcher"
         # "temperature"
         "hyprland/workspaces"
         "hyprland/window"
@@ -73,11 +75,19 @@ in {
         "pulseaudio"
         "network"
         "battery"
-        "idle_inhibitor"
+        #"idle_inhibitor"
         "tray"
         "hyprland/language"
         "clock"
       ];
+
+      "group/launcher" = {
+        modules = [
+          "custom/launcher"
+          "user"
+        ];
+        orientation = "horizontal";
+      };
 
       "custom/launcher" = {
         format = " ";
@@ -85,6 +95,10 @@ in {
         on-click = "exec rofi -show combi";
         on-click-middle = "exec default_wall";
         on-click-right = "exec wallpaper_random";
+      };
+
+      user = {
+        format = "{user}";
       };
 
       "hyprland/workspaces" = {
@@ -102,7 +116,7 @@ in {
         rewrite = {
           "kitty" = "󰄛 Kitty";
           "Mozilla Firefox" = "󰈹 Firefox";
-          "Telegram" = " Telegram";
+          "Telegram.*" = " Telegram";
           "Discord" = " Discord";
           "Spotify.*" = " Spotify";
         };
@@ -117,8 +131,8 @@ in {
         on-click-middle = "playerctl previous";
         on-click-right = "playerctl next";
         format-icons = {
-          "Paused" = "<span foreground='#6dd9d9'></span>";
-          "Playing" = "<span foreground='#82db97'></span>";
+          "Paused" = "${markup blue ""}";
+          "Playing" = "${markup green ""}";
         };
       };
 
@@ -174,14 +188,16 @@ in {
 
       network = {
         interval = 5;
-        format-wifi = "${markup green " "} {essid}";
-        format-ethernet = "${markup green " "}{ipaddr}/{cidr}";
-        format-linked = "${markup yellow " "}{ifname} (No IP)";
-        format-disconnected = "${markup red "󱘖 "}Disconnected";
-        format-alt = "${markup green " "}{bandwidthUpBytes} | ${markup mauve " "}{bandwidthDownBytes}";
+        format-wifi = "${markup green " "}";
+        format-ethernet = "${markup green " "}";
+        format-disconnected = "${markup red "󱘖 "}";
+        format-alt = "${markup green ""} {bandwidthUpBytes}|${markup mauve ""} {bandwidthDownBytes}";
         tooltip-format = "${markup green " "}{ifname} via {gwaddr}";
-        on-click-middle = "nm-connection-editor";
-        on-click-right = "kitty nmtui";
+        tooltip-format-wifi = "${markup green " "} {essid}\n${markup green " "} {ifname} via {gwaddr}";
+        tooltip-format-ethernet = "${markup green " "} {ipaddr}/{cidr}\n${markup green " "} {ifname} via {gwaddr}";
+        tooltip-format-disconnected = "${markup red "󱘖 " } Disconnected\n${markup green " "} {ifname} via {gwaddr}";
+        on-click-middle = "kitty nmtui";
+        on-click-right = "nm-connection-editor";
       };
 
       battery = {
@@ -210,14 +226,14 @@ in {
       };
 
       "hyprland/language" = {
-        "format-en" = "En";
-        "format-ru" = "Ru";
+        "format-en" = "en";
+        "format-ru" = "ru";
       };
 
       clock = {
         interval = 60;
         format = " {:%H:%M}";
-        format-alt = " {:%H:%M, %a %b %d, %G}";
+        format-alt = " {%a, %b %d,%H:%M}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
@@ -236,6 +252,47 @@ in {
       tray = {
         icon-size = 15;
         spacing = 5;
+      };
+
+      "group/power" = {
+        drawer = {
+          transition-duration = 500;
+          children-class = "not-power";
+          transition-left-to-right = false;
+        };
+
+        modules = [
+          "custom/power"
+          "custom/lock"
+          "custom/quit"
+          "custom/reboot"
+        ];
+
+        orientation = "vertical";
+      };
+
+      "custom/power" = {
+        format = "";
+        tooltip = false;
+        on-click = "shutdown now";
+      };
+
+      "custom/quit" = {
+        format = "󰗼";
+        tooltip = false;
+        on-click = "hyprctl dispatch exit";
+      };
+ 
+      "custom/lock" = {
+        format = "󰍁";
+        tooltip = false;
+        on-click = "hyprlock";
+      };
+
+      "custom/reboot" = {
+        format = "󰜉";
+        tooltip = false;
+        on-click = "reboot";
       };
     };
 

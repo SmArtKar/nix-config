@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ ! $(pidof rofi) ]]; then
+  rofi -show combi
+else
+  pkill rofi
+fi
