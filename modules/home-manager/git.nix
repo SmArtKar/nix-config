@@ -5,6 +5,10 @@
 # Git and Jujutsu VCSs imports
 
 {
+  home.packages = with pkgs; [
+    git-credential-manager
+  ];
+
   programs.git = {
     enable = true;
     userName = "SmArtKar";
@@ -12,6 +16,12 @@
     
     extraConfig = {
       init.defaultBranch = "master";
+    };
+
+    credential = {
+      helper = "manager";
+      "https://github.com".username = "SmArtKar";
+      credentialStore = "cache";
     };
   };
 

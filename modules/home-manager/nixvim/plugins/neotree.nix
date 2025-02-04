@@ -23,6 +23,13 @@
         width = 30;
         autoExpandWidth = true;
       };
+      extraOptions = {
+        filesystem = {
+          filtered_items = {
+            hide_dotfiles = false;
+          };
+        };
+      };
     };
   };
 }
