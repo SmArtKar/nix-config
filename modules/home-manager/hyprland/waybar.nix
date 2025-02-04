@@ -191,7 +191,7 @@ in {
         format-wifi = "${markup green " "}";
         format-ethernet = "${markup green " "}";
         format-disconnected = "${markup red "󱘖 "}";
-        format-alt = "${markup green ""} {bandwidthUpBytes}|${markup mauve ""} {bandwidthDownBytes}";
+        format-alt = "${markup green ""} {bandwidthUpBytes} | ${markup mauve ""} {bandwidthDownBytes}";
         tooltip-format = "${markup green " "}{ifname} via {gwaddr}";
         tooltip-format-wifi = "${markup green " "} {essid}\n${markup green " "} {ifname} via {gwaddr}";
         tooltip-format-ethernet = "${markup green " "} {ipaddr}/{cidr}\n${markup green " "} {ifname} via {gwaddr}";

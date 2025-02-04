@@ -38,7 +38,7 @@ in {
       COLORD=$(${pkgs.yq}/bin/yq -r .palette.base0D ${theme})
       COLORE=$(${pkgs.yq}/bin/yq -r .palette.base0E ${theme})
       COLORF=$(${pkgs.yq}/bin/yq -r .palette.base0F ${theme})
-      ${pkgs.lutgen}/bin/lutgen apply -o $out ${wallpaper} -- $COLOR0 $COLOR1 $COLOR2 $COLOR3 $COLOR4 $COLOR5 $COLOR6 $COLOR7 $COLOR8 $COLOR9 $COLORA $COLORB $COLORC $COLORD $COLORE $COLORF 
+      ${pkgs.lutgen}/bin/lutgen apply -o $out ${wallpaper} -- $COLOR0 $COLOR1 $COLOR2 $COLOR3 $COLOR4 $COLOR5 $COLOR6 $COLOR7 $COLOR8 $COLOR9 $COLORA $COLORB $COLORC $COLORD $COLORE $COLORF
     '';
       #wallpaper;
 

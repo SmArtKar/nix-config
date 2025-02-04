@@ -17,11 +17,13 @@
     extraConfig = {
       init.defaultBranch = "master";
     };
-
-    credential = {
-      helper = "manager";
-      "https://github.com".username = "SmArtKar";
-      credentialStore = "cache";
+    
+    extraConfig = {
+      credential = {
+        helper = "manager";
+        "https://github.com".username = "SmArtKar";
+        credentialStore = "cache";
+      };
     };
   };
 
