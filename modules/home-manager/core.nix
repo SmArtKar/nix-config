@@ -5,6 +5,11 @@
 # Core packages for home-manager
 
 {
+  imports = [
+    ./shell/git.nix
+    ./shell/yazi.nix
+  ];
+
   home.packages = with pkgs; [
     # Misc
     tldr

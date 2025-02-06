@@ -2,15 +2,19 @@
   font-size: 12pt;
   font-weight: bold;
   border-radius: 8px;
-  transition-property: background-color;
+  transition-property: opacity, background-color;
   transition-duration: 0.5s;
   background-color: transparent;
-  color: @base07;
+  opacity: 0.97;
 }
 
 window>box {
   margin: 5px 5px 0px 5px;
   border: none;
+}
+
+*:hover {
+  opacity: 1.0;
 }
 
 /* Workspaces */
@@ -19,34 +23,53 @@ window>box {
   background-color: @base00;
   padding: 2px 6px 2px 6px;
   margin-right: 4px;
-  border: 2px solid transparent;
+  color: @base07;
 }
 
 #workspaces button.active {
-  background-color: @base01;
-  border: 2px solid @base05;
+  background-color: @base05;
+  color: @base00;
+  opacity: 1.0;
 }
 
 #workspaces button.urgent {
   color: @base00;
   background-color: @base08;
   font-weight: bolder;
+  opacity: 1.0;
 }
 
 /* Elements */
+#window {
+  background-color: @base00;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
 
-#window,
 #custom-playerctl {
   background-color: @base00;
-  border: 2px solid @base05;
+  border-radius: 4px;
   padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
+
+#custom-playerctl-left {
+  background-color: @base00;
+  border-radius: 4px 4px 4px 16px;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+}
+
+#custom-playerctl-right {
+  background-color: @base00;
+  border-radius: 4px 4px 16px 4px;
+  padding: 2px 12px 2px 8px;
   margin-right: 4px;
 }
 
 #launcher {
   background-color: @base00;
-  border: 2px solid @base05;
-  padding: 2px 8px 2px 2px;
+  padding: 2px 8px 2px 4px;
   margin-right: 4px;
 }
 
@@ -56,9 +79,8 @@ window>box {
 
 #custom-launcher {
   background-color: @base00;
-  /*border: 2px solid @base05;*/
-  padding: 0px 2px 0px 5px;
-  /* margin-right: 4px; */
+  padding: 0px 3px 0px 6px;
+  margin-right: 4px;
   color: @base0D;
   font-size: 14pt;
 }
@@ -71,7 +93,6 @@ window>box {
 #clock,
 #tray {
   background-color: @base00;
-  border: 2px solid @base05;
   padding: 2px 10px 2px 10px;
   margin-right: 4px;
   border-radius: 4px 16px 4px 16px;
@@ -79,7 +100,6 @@ window>box {
 
 #network {
   background-color: @base00;
-  border: 2px solid @base05;
   padding: 2px 8px 2px 10px;
   margin-right: 4px;
   border-radius: 4px 16px 4px 16px;
@@ -87,14 +107,11 @@ window>box {
 
 #idle_inhibitor {
   background-color: @base00;
-  border: 2px solid @base05;
   padding: 2px 7px 2px 8px;
   margin-right: 4px;
   border-radius: 4px 16px 4px 16px;
 }
 
 tooltip {
-  background: alpha(@base00, 0.9);
-  /* Lavender in catpuccin, replace with @secondary */
-  border: 3px solid @base07;
+  background: @base00;
 }

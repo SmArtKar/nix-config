@@ -48,8 +48,9 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    agenix.url = "github:ryantm/agenix";
+    
+    # Commit lock on agenix
+    agenix.url = "github:ryantm/agenix/e600439ec4c273cf11e06fe4d9d906fb98fa097c";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

@@ -4,11 +4,18 @@
 
 { config, pkgs, lib, inputs, ... }:
 
-{
+let
+  username = "smartkar";
+  userDescription = "SmArtKar";
+  userDir = "/home/${username}";
+  hostName = "SmArtKar-Ruby";
+  timeZone = "Europe/Budapest";
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./../../modules/nixos/stylix.nix
+      ./../../modules/nixos/agenix.nix
     ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -17,18 +24,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "SmArtKar-Ruby"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
-  time.timeZone = "Europe/Budapest";
+  time.timeZone = timeZone;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -90,9 +87,9 @@
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.smartkar = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "SmArtKar";
+    description = userDescription;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       firefox
@@ -102,34 +99,67 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    # vim
-    # wget
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   programs.mtr.enable = true;
+  /*
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
+  */
 
   # Enable bluetooth and bluetooth controls
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
+  networking = {
+    hostName = hostName;
+    networkmanager.enable = true;
+    firewall = {
+      allowedTCPPortRanges = [
+        {
+          from = 8060;
+          to = 8090;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 8060;
+          to = 8090;
+        }
+      ];
+    };
+  };
+
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     settings = {
+      AllowUsers = null;
+      UseDns = true;
       X11Forwarding = true;
       PermitRootLogin = "no";
     };
+    hostKeys = [
+      {
+        bits = 4096;
+        path = "/etc/ssh/ssh_host_rsa_key";
+        type = "rsa";
+      }
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
+  programs.ssh.startAgent = true;
 
   services.flatpak.enable = true;
   nixpkgs.config.allowUnfree = true;
@@ -140,12 +170,6 @@
       smartkar = import ./home.nix;
     };
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "24.11";
 

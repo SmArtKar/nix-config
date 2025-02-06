@@ -20,11 +20,11 @@
       frameless = true;
       transparent = true;
       themeLinks = [
-        #"https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
+        # "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
         "https://raw.githubusercontent.com/xcruxiex/themes/refs/heads/master/themes-cores/nocturnal.css"
       ];
       enabledThemes = [
-        #"stylix.theme.css"
+        # "stylix.theme.css"
       ];
 
       plugins = {
@@ -55,7 +55,7 @@
         messageLinkEmbeds.enable = true;
         noBlockedMessages.enable = true;
         noSystemBadge.enable = true;
-        # noTypingAnimation.enable = true;
+        noTypingAnimation.enable = true;
         noUnblockToJump.enable = true;
         onePingPerDM.enable = true;
         openInApp.enable = true;
@@ -71,10 +71,6 @@
           useSpotifyUris = true;
         };
         spotifyCrack.enable = true;
-        typingTweaks = {
-          enable = true;
-          showRoleColors = false;
-        };
         validUser.enable = true;
         volumeBooster.enable = true;
         youtubeAdblock.enable = true;

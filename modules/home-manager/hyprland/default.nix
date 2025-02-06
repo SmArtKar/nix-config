@@ -1,10 +1,52 @@
 # hyprland
 
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, config, lib, ... }:
 
 # Hyprland WM
 
-{
+let
+  colorNames = [
+    "base00"
+    "base01"
+    "base02"
+    "base03"
+    "base04"
+    "base05"
+    "base06"
+    "base07"
+    "base08"
+    "base09"
+    "base0A"
+    "base0B"
+    "base0C"
+    "base0D"
+    "base0E"
+    "base0F"
+  ];
+
+  # Colors used in the markup
+  colors = config.lib.stylix.colors;
+  
+  color_base = colors.base00;
+  mantle = colors.base01;
+  surface0 = colors.base02;
+  surface1 = colors.base03;
+  surface2 = colors.base04;
+  color_text = colors.base05;
+  rosewater = colors.base06;
+  lavender = colors.base07;
+  red = colors.base08;
+  peach = colors.base09;
+  yellow = colors.base0A;
+  green = colors.base0B;
+  teal = colors.base0C;
+  blue = colors.base0D;
+  mauve = colors.base0E;
+  flamingo = colors.base0F;
+
+  defineColor = name: value: "@define-color ${name} ${value};";
+  markup = color: text: "<span color=\"${color}\" style=\"oblique\">${text}</span>";
+in {
   imports = 
   [
     # Kitty is required by default
@@ -17,6 +59,8 @@
   
   home.packages = with pkgs; [
     hyprshot
+    xdg-desktop-portal-hyprland
+    hyprpolkitagent
   ];
 
   wayland.windowManager.hyprland = {
@@ -54,8 +98,8 @@
       # ----------
 
       "$terminal" = "kitty";
-      "$menu" = "rofi -show combi";
-      "$fileManager" = "kitty -e yazi";
+      "$menu" = "rofi -show drun";
+      "$fileManager" = "kitty --title yazi-float yazi";
       "$browser" = "firefox";
       "$logout" = "wlogout";
 
@@ -67,9 +111,10 @@
 	      gaps_in = 5;
 	      gaps_out = 10;
 
-      	border_size = 3;
+      	border_size = 0;
 
         resize_on_border = true;
+        allow_tearing = true;
       	layout = "dwindle";
       };
 
@@ -78,23 +123,31 @@
       # ---------
 
       decoration = {
-        rounding = 6;
+        rounding = 10;
         active_opacity = 1.0;
 	      inactive_opacity = 0.93;
 	      fullscreen_opacity = 1.0;
 
 	      shadow = {
           enabled = true;
-	        range = 4;
+          ignore_window = true;
+	        range = 16;
 	        render_power = 3;
+          color = lib.mkForce "rgba(${color_base}FF)";
+          color_inactive = lib.mkForce "rgba(${color_base}FF)";
 	      };
 
 	      blur = {
 	        enabled = true;
-	        size = 3;
-	        passes = 1;
+	        size = 4;
+	        passes = 3;
 	        vibrancy = 0.1696;
 	        ignore_opacity = false;
+          new_optimizations = true;
+          noise = 0.0117;
+          contrast = 1.2;
+          brightness = 1;
+          xray = false;
 	      };
       };
 
@@ -163,17 +216,28 @@
 
         # Workspace scrolling
 
-	      "$mod, mouse_up, workspace, e+1"
-	      "$mod, mouse_down, workspace, e-1"
+	      "$mod, mouse_up, workspace, e-1"
+	      "$mod, mouse_down, workspace, e+1"
+        "$mod CTRL, left, workspace, e-1"
+        "$mod CTRL, right, workspace, e+1"
+
+        # 10th workspace
+        "$mod, 0, workspace, 10"
+        "$mod SHIFT, 0, movetoworkspace, 10"
       ]
       ++ (
         # Workspace binds
 	      builtins.concatLists (builtins.genList (i:
 	        let ws = i + 1;
-	        in [
+	        in if i < 5 then [
             "$mod, code:1${toString i}, workspace, ${toString ws}"
 	          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-	        ]
+            "$mod CTRL, code:1${toString i}, workspace, ${toString (ws + 5)}"
+	          "$mod CTRL SHIFT, code:1${toString i}, movetoworkspace, ${toString (ws + 5)}"
+	        ] else [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+	          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
         )
 	      9)
       );
@@ -184,30 +248,68 @@
 	      "$mod, mouse:273, resizewindow"
 	      "$mod ALT, mouse:272, resizewindow"
       ];
-      
-      windowrule = [
-        "float, yad"
-        "float, .*pavucontrol"
-        "float, qt5ct"
-        "float, feh|imv|Gpicview"
-        "float, qemu"
-        "float, .*nmtui"
-        "float, nm-connection-editor"
 
-        "float, wlogout"
-        "move 0 0, wlogout"
-        "size 100% 100% wlogout"
-        "animation slide, wlogout"
+      windowrulev2 = [
+        "float, class:(yad)"
+        "float, class:(org\.pulseaudio\.pavucontrol)"
+        "float, class:(feh|imv|Gpicview)"
+        "float, class:(qemu)"
+        "float, class:(nm-connection-editor)"
+        "float, class:(\.blueman-manager-wrapped)"
+        "float, class:(firefox), title:(Library)"
 
-        "workspace 4, .*[dD]iscord.*"
-        "workspace 5, .*[tT]elegram.*"
-        "workspace 6, .*[sS]potify.*"
-        "workspace 7, .*[yY]azi.*"
+        "float, class:(kitty), title:(nmtui)"
+        "size 30% 50%, class:(kitty), title:(nmtui)"
+
+        "float, class:(kitty), title:(yazi-float)"
+        "move onscreen cursor -50% -50%, class:(kitty), title:(yazi-float)"
+        "size 60% 60%, class:(kitty), title:(yazi-float)"
+
+        # Functional Picture-in-Picture
+        "float, class:(firefox), title:(Picture-in-Picture)"
+        "suppressevent fullscreen maximize, class:(firefox), title:(Picture-in-Picture)"
+        "pin, class:(firefox), title:(Picture-in-Picture)"
+        "move 100%-w-15 100%-w-15, class:(firefox), title:(Picture-in-Picture)"
+
+        # Wlogout handling
+        "float, class:(wlogout)"
+        "move 0 0, class:(wlogout)"
+        "size 100% 100%, class:(wlogout)"
+        "animation slide, class:(wlogout)"
+
+        # Workspace ordering
+        # "workspace 1, class:(firefox)"
+        # "workspace 2, class:(kitty)"
+        "workspace 3, class:(kitty), title:(yazi)"
+        "workspace 4, class:(discord)"
+        "workspace 5, class:(org.telegram.desktop)"
+        # "workspace 6, class:(firefox)"
+        "workspace 7, class:(Spotify)"
       ];
 
       workspace = [
-        "r[1-5], monitor:DP-1"
-        "r[6-10], monitor:eDP-1"
+        "1,monitor:DP-1,default:true,persistant:true"
+        "2,monitor:DP-1,default:true,persistant:true"
+        "3,monitor:DP-1,default:true,persistant:true"
+        "4,monitor:DP-1,default:true,persistant:true"
+        "5,monitor:DP-1,default:true,persistant:true"
+        "6,monitor:eDP-1,default:true,persistant:true"
+        "7,monitor:eDP-1,default:true,persistant:true"
+        "8,monitor:eDP-1"
+        "9,monitor:eDP-1"
+        "10,monitor:eDP-1"
+      ];
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+      };
+
+      layerrule = [
+        "blur, rofi"
+        "blur, waybar"
+        "ignorezero, rofi"
+        "ignorezero, waybar"
       ];
     };
     

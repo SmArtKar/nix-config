@@ -8,7 +8,6 @@
   imports =
   [
     ./../../modules/home-manager/core.nix
-    ./../../modules/home-manager/git.nix
     ./../../modules/home-manager/media.nix
 
     ./../../modules/home-manager/hyprland
@@ -25,6 +24,13 @@
   home.homeDirectory = "/home/smartkar";
 
   home.stateVersion = "24.05";
+
+  home.file = {
+    ".local/bin/scripts" = {
+      source = ./../../modules/scripts;
+      recursive = true;
+    };
+  };
 
   home.packages = with pkgs; [
 

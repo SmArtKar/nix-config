@@ -59,15 +59,17 @@ in {
       ];
 
       modules-left = [
-        #"custom/launcher"
-        "group/launcher"
+        "custom/launcher"
+        # "group/launcher"
         # "temperature"
         "hyprland/workspaces"
-        "hyprland/window"
+        # "hyprland/window"
       ];
 
       modules-center = [
+        "custom/playerctl-left"
         "custom/playerctl"
+        "custom/playerctl-right"
       ];
 
       modules-right = [
@@ -77,7 +79,7 @@ in {
         "battery"
         #"idle_inhibitor"
         "tray"
-        "hyprland/language"
+        #"hyprland/language"
         "clock"
       ];
 
@@ -92,7 +94,7 @@ in {
       "custom/launcher" = {
         format = " ";
         tooltip = false;
-        on-click = "exec rofi -show combi";
+        on-click = "sh $HOME/.local/bin/scripts/menu";
         on-click-middle = "exec default_wall";
         on-click-right = "exec wallpaper_random";
       };
@@ -112,7 +114,7 @@ in {
       };
 
       "hyprland/window" = {
-        format = "{initialTitle}";
+        format = "{class} {initialTitle}";
         rewrite = {
           "kitty" = "󰄛 Kitty";
           "Mozilla Firefox" = "󰈹 Firefox";
@@ -122,18 +124,36 @@ in {
         };
       };
 
+      "custom/playerctl-left" = {
+        format = "${markup teal "󰙣"}";
+        on-click = "playerctl previous";
+        on-scroll-down = "playerctl volume .05-";
+        on-scroll-up = "playerctl volume .05+";
+      };
+
       "custom/playerctl" = {
         format = "{icon}<span>{}</span>";
         return-type = "json";
         max-length = 55;
-        exec = "playerctl -a metadata --format '{\"text\": \"  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        exec = "playerctl -a metadata --format '{\"text\": \"  {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        #exec = "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
         on-click = "playerctl play-pause";
         on-click-middle = "playerctl previous";
         on-click-right = "playerctl next";
         format-icons = {
-          "Paused" = "${markup blue ""}";
-          "Playing" = "${markup green ""}";
+          "Paused" = "${markup blue ""}";
+          "Playing" = "${markup flamingo ""}";
+          "Stopped" = "${markup red ""}";
         };
+        on-scroll-down = "playerctl volume .05-";
+        on-scroll-up = "playerctl volume .05+";
+      };
+
+      "custom/playerctl-right" = {
+        format = "${markup teal "󰙡"}";
+        on-click = "playerctl next";
+        on-scroll-down = "playerctl volume .05-";
+        on-scroll-up = "playerctl volume .05+";
       };
 
       temperature = {
@@ -184,19 +204,20 @@ in {
         on-click = "pavucontrol";
         on-click-right = "amixer set Master toggle";
         smooth-scrolling-threshold = 1;
+        scroll-step = 5;
       };
 
       network = {
         interval = 5;
-        format-wifi = "${markup green " "}";
-        format-ethernet = "${markup green " "}";
-        format-disconnected = "${markup red "󱘖 "}";
+        format-wifi = "${markup green " "} {signalStrength}%";
+        format-ethernet = "${markup green "󰈀 "}100%";
+        format-disconnected = "${markup red "󱘖 "}0%";
         format-alt = "${markup green ""} {bandwidthUpBytes} | ${markup mauve ""} {bandwidthDownBytes}";
         tooltip-format = "${markup green " "}{ifname} via {gwaddr}";
         tooltip-format-wifi = "${markup green " "} {essid}\n${markup green " "} {ifname} via {gwaddr}";
         tooltip-format-ethernet = "${markup green " "} {ipaddr}/{cidr}\n${markup green " "} {ifname} via {gwaddr}";
         tooltip-format-disconnected = "${markup red "󱘖 " } Disconnected\n${markup green " "} {ifname} via {gwaddr}";
-        on-click-middle = "kitty nmtui";
+        on-click-middle = "kitty --title nmtui nmtui";
         on-click-right = "nm-connection-editor";
       };
 
@@ -233,7 +254,7 @@ in {
       clock = {
         interval = 60;
         format = " {:%H:%M}";
-        format-alt = " {%a, %b %d,%H:%M}";
+        format-alt = " {:%a, %b %d, %H:%M}";
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "month";
@@ -280,7 +301,7 @@ in {
       "custom/quit" = {
         format = "󰗼";
         tooltip = false;
-        on-click = "hyprctl dispatch exit";
+        on-click = "hynprctl dispatch exit";
       };
  
       "custom/lock" = {
