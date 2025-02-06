@@ -11,6 +11,7 @@ let
     vi = "hx";
     vim = "hx";
     nano = "hx";
+    zj = "zellij";
   };
 in {
   # Does not work in nushell, needs to be manually assigned down the line

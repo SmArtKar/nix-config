@@ -8,6 +8,7 @@
   imports = [
     ./nushell.nix
     ./starship.nix
+    ./zellij.nix
   ];
 
   # A better cd command with global memory

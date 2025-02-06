@@ -126,34 +126,35 @@ in {
 
       "custom/playerctl-left" = {
         format = "${markup teal "󰙣"}";
-        on-click = "playerctl previous";
-        on-scroll-down = "playerctl volume .05-";
-        on-scroll-up = "playerctl volume .05+";
+        on-click = "playerctl --player playerctld previous";
+        on-scroll-down = "playerctl --player playerctld volume .05-";
+        on-scroll-up = "playerctl --player playerctld volume .05+";
+        tooltip = false;
       };
 
       "custom/playerctl" = {
         format = "{icon}<span>{}</span>";
         return-type = "json";
         max-length = 55;
-        exec = "playerctl -a metadata --format '{\"text\": \"  {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-        #exec = "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-        on-click = "playerctl play-pause";
-        on-click-middle = "playerctl previous";
-        on-click-right = "playerctl next";
+        exec = "playerctl --player playerctld -a metadata --format '{\"text\": \"  {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        on-click = "playerctl --player playerctld play-pause";
+        on-click-middle = "playerctl --player playerctld previous";
+        on-click-right = "playerctl --player playerctld next";
         format-icons = {
           "Paused" = "${markup blue ""}";
           "Playing" = "${markup flamingo ""}";
           "Stopped" = "${markup red ""}";
         };
-        on-scroll-down = "playerctl volume .05-";
-        on-scroll-up = "playerctl volume .05+";
+        on-scroll-down = "playerctl --player playerctld volume .05-";
+        on-scroll-up = "playerctl --player playerctld volume .05+";
       };
 
       "custom/playerctl-right" = {
         format = "${markup teal "󰙡"}";
-        on-click = "playerctl next";
-        on-scroll-down = "playerctl volume .05-";
-        on-scroll-up = "playerctl volume .05+";
+        on-click = "playerctl --player playerctld next";
+        on-scroll-down = "playerctl --player playerctld volume .05-";
+        on-scroll-up = "playerctl --player playerctld volume .05+";
+        tooltip = false;
       };
 
       temperature = {
