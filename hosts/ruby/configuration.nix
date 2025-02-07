@@ -90,6 +90,7 @@ in {
   users.users."${username}" = {
     isNormalUser = true;
     description = userDescription;
+    home = userDir;
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       firefox
