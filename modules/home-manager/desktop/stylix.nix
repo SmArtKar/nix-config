@@ -9,5 +9,7 @@
     nixvim.enable = true;
     btop.enable = true;
     waybar.enable = false;
+    nixcord.enable = false;
+    spicetify.enable = false;
   };
 }

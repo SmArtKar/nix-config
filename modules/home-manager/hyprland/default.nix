@@ -235,6 +235,10 @@
         "size 100% 100%, class:(wlogout)"
         "animation slide, class:(wlogout)"
 
+        # Telegram voice call handling
+        "float, class:(org.telegram.desktop), title:(^(?!.*Telegram).*$)"
+        "pin, class:(org.telegram.desktop), title:(^(?!.*Telegram).*$)"
+
         # Workspace ordering
         # "workspace 1, class:(firefox)"
         # "workspace 2, class:(kitty)"
