@@ -4,49 +4,7 @@
 
 # Hyprland WM
 
-let
-  colorNames = [
-    "base00"
-    "base01"
-    "base02"
-    "base03"
-    "base04"
-    "base05"
-    "base06"
-    "base07"
-    "base08"
-    "base09"
-    "base0A"
-    "base0B"
-    "base0C"
-    "base0D"
-    "base0E"
-    "base0F"
-  ];
-
-  # Colors used in the markup
-  colors = config.lib.stylix.colors;
-  
-  color_base = colors.base00;
-  mantle = colors.base01;
-  surface0 = colors.base02;
-  surface1 = colors.base03;
-  surface2 = colors.base04;
-  color_text = colors.base05;
-  rosewater = colors.base06;
-  lavender = colors.base07;
-  red = colors.base08;
-  peach = colors.base09;
-  yellow = colors.base0A;
-  green = colors.base0B;
-  teal = colors.base0C;
-  blue = colors.base0D;
-  mauve = colors.base0E;
-  flamingo = colors.base0F;
-
-  defineColor = name: value: "@define-color ${name} ${value};";
-  markup = color: text: "<span color=\"${color}\" style=\"oblique\">${text}</span>";
-in {
+{
   imports = 
   [
     # Kitty is required by default
@@ -133,8 +91,8 @@ in {
           ignore_window = true;
 	        range = 16;
 	        render_power = 3;
-          color = lib.mkForce "rgba(${color_base}FF)";
-          color_inactive = lib.mkForce "rgba(${color_base}FF)";
+          color = lib.mkForce "rgba(${config.lib.stylix.colors.base00}FF)";
+          color_inactive = lib.mkForce "rgba(${config.lib.stylix.colors.base00}FF)";
 	      };
 
 	      blur = {
@@ -285,6 +243,13 @@ in {
         "workspace 5, class:(org.telegram.desktop)"
         # "workspace 6, class:(firefox)"
         "workspace 7, class:(Spotify)"
+
+        # Opacity rules
+        # Per stylix config, terminals are already 0.95 opacity
+        "opacity 1.0 override 0.97 override, class:(kitty)"
+        # Transparent dark mode apps look... questionable
+        "opacity 1.0 override 0.95 override, class:(discord)"
+        "opacity 1.0 override 0.95 override, class:(org.telegram.desktop)"
       ];
 
       workspace = [

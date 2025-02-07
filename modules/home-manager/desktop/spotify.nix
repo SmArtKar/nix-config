@@ -1,12 +1,13 @@
 # spotify.nix
 
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, config, lib, ... }:
 
 # Fancy spotify client
 
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
+    ./../../nixos/stylix.nix
   ];
 
   programs.spicetify =
@@ -53,7 +54,11 @@
       pointer
     ];
 
-    theme = lib.mkForce spicePkgs.themes.text;
+    theme = lib.mkForce (if config.visual.tui_theme then spicePkgs.themes.text else spicePkgs.themes.comfy);
+    colorScheme = lib.mkForce "custom";
+    customColorScheme = {
+
+    };
   };
 }
 

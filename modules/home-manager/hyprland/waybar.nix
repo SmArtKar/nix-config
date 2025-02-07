@@ -41,8 +41,8 @@ let
   green = colors.base0B;
   teal = colors.base0C;
   blue = colors.base0D;
-  mauve = colors.base0E;
-  flamingo = colors.base0F;
+  pink = colors.base0E;
+  purple = colors.base0F;
 
   defineColor = name: value: "@define-color ${name} ${value};";
   markup = color: text: "<span color=\"${color}\" style=\"oblique\">${text}</span>";
@@ -142,7 +142,7 @@ in {
         on-click-right = "playerctl --player playerctld next";
         format-icons = {
           "Paused" = "${markup blue ""}";
-          "Playing" = "${markup flamingo ""}";
+          "Playing" = "${markup purple ""}";
           "Stopped" = "${markup red ""}";
         };
         on-scroll-down = "playerctl --player playerctld volume .05-";
@@ -213,7 +213,7 @@ in {
         format-wifi = "${markup green " "} {signalStrength}%";
         format-ethernet = "${markup green "󰈀 "}100%";
         format-disconnected = "${markup red "󱘖 "}0%";
-        format-alt = "${markup green ""} {bandwidthUpBytes} | ${markup mauve ""} {bandwidthDownBytes}";
+        format-alt = "${markup green ""} {bandwidthUpBytes} | ${markup purple ""} {bandwidthDownBytes}";
         tooltip-format = "${markup green " "}{ifname} via {gwaddr}";
         tooltip-format-wifi = "${markup green " "} {essid}\n${markup green " "} {ifname} via {gwaddr}";
         tooltip-format-ethernet = "${markup green " "} {ipaddr}/{cidr}\n${markup green " "} {ifname} via {gwaddr}";
