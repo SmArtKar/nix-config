@@ -12,6 +12,8 @@ let
     vim = "hx";
     nano = "hx";
     zj = "zellij";
+    nb = "nh-build";
+    lg = "lazygit";
   };
 in {
   # Does not work in nushell, needs to be manually assigned down the line
@@ -19,7 +21,7 @@ in {
 
   programs.nushell = {
     enable = true;
-    configFile.source = ./nushell/config.nu;
+    configFile.source = ./../../../configs/nushell/config.nu;
     inherit shellAliases;
   };
   
@@ -29,8 +31,8 @@ in {
   };
 
   programs.carapace = {
-    #enable = true;
-    #enableBashIntegration = true;
-    #enableNushellIntegration = true;
+    enable = true;
+    enableBashIntegration = true;
+    enableNushellIntegration = true;
   };
 }

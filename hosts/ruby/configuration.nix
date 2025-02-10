@@ -11,7 +11,7 @@ let
 in {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./../../hardware-configuration.nix
       ./../../modules/nixos/hyprland.nix
       ./../../modules/nixos/stylix.nix
       ./../../modules/nixos/agenix.nix
@@ -168,6 +168,10 @@ in {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 3d --keep 3";
-    flake = "/etc/nixos/";
+    flake = "/etc/nixos";
+  };
+
+  environment.sessionVariables = {
+    FLAKE = "/etc/nixos";
   };
 }
