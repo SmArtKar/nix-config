@@ -114,7 +114,7 @@ in {
       };
 
       "hyprland/window" = {
-        format = "{class} {initialTitle}";
+        format = "{initialTitle}";
         rewrite = {
           "kitty" = "󰄛 Kitty";
           "Mozilla Firefox" = "󰈹 Firefox";

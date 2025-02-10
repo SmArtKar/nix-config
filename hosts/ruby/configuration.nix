@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+ Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -14,6 +14,7 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./../../modules/nixos/hyprland.nix
       ./../../modules/nixos/stylix.nix
       ./../../modules/nixos/agenix.nix
     ];
@@ -44,24 +45,7 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  # Enable the K Desktop Environment
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
-
-  # Hyprland package needs to be enabled in config for mandatory components, actual config is done via home
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  services.displayManager.defaultSession = "hyprland";
-
+ 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

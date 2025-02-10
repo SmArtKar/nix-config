@@ -97,7 +97,7 @@
 
 	      blur = {
 	        enabled = true;
-	        size = 4;
+	        size = 8;
 	        passes = 3;
 	        vibrancy = 0.1696;
 	        ignore_opacity = false;
@@ -242,14 +242,14 @@
         # Workspace ordering
         # "workspace 1, class:(firefox)"
         # "workspace 2, class:(kitty)"
-        "workspace 3, class:(kitty), title:(yazi)"
+        "workspace 3, class:(VSCodium)"
         "workspace 4, class:(discord)"
         "workspace 5, class:(org.telegram.desktop)"
         # "workspace 6, class:(firefox)"
         "workspace 7, class:(Spotify)"
 
         # Opacity rules
-        # Per stylix config, terminals are already 0.95 opacity
+        # Per stylix config, terminals already have reduced opacity
         "opacity 1.0 override 0.97 override, class:(kitty)"
         # Transparent dark mode apps look... questionable
         "opacity 1.0 override 0.95 override, class:(discord)"

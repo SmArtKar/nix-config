@@ -18,6 +18,7 @@
     ./../../modules/home-manager/desktop/telegram.nix
     ./../../modules/home-manager/desktop/discord.nix
     ./../../modules/home-manager/desktop/spotify.nix
+    ./../../modules/home-manager/desktop/vscode.nix
   ];
 
   home.username = "smartkar";
