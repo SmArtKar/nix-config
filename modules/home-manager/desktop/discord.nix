@@ -11,7 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    #vesktop
+    #vesktop # Enable vesktop instead of nixcord breaks once more
   ];
 
   programs.nixcord = {
@@ -88,7 +88,11 @@
     };
 
     extraConfig = {
-
+      openasar = {
+        setup = true;
+        quickstart = true;
+      };
+      MINIMIZE_TO_TRAY = false;
     };
   };
 }

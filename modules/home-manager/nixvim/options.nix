@@ -28,7 +28,7 @@
       inccommand = "split";
       ignorecase = true; # Both cases
       smartcase = true; # Unless we have uppercase, then match case
-      cursorline = true;
+      cursorline = false;
       cursorcolumn = false; # Don't highlight the currently active column
       fileencoding = "utf-8"; # Default file encoding
       termguicolors = true; # 24-bit colors

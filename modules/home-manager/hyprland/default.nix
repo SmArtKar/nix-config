@@ -57,8 +57,10 @@
       # ----------
 
       "$terminal" = "kitty";
+      "$terminalFloat" = "kitty --title kitty-float";
+      "$terminalFloatPin" = "kitty --title kitty-float-pin";
       "$menu" = "rofi -show drun";
-      "$fileManager" = "kitty --title yazi-float yazi";
+      "$fileManager" = "kitty --title kitty-float yazi";
       "$visualizer" = "kitty --title cava-float cava";
       "$browser" = "firefox";
       "$logout" = "wlogout";
@@ -141,6 +143,7 @@
       bind = [
         # Core binds
 	      "$mod, Q, exec, $terminal"
+	      "$mod SHIFT, Q, exec, $terminalFloat"
 	      "$mod, R, exec, $menu"
 	      "$mod, B, exec, $browser"
 	      "$mod, E, exec, $fileManager"
@@ -224,9 +227,10 @@
         "float, class:(kitty), title:(nmtui)"
         "size 30% 50%, class:(kitty), title:(nmtui)"
 
-        "float, class:(kitty), title:(yazi-float)"
-        "move onscreen cursor -50% -50%, class:(kitty), title:(yazi-float)"
-        "size 60% 60%, class:(kitty), title:(yazi-float)"
+        "float, class:(kitty), title:(kitty-float.*)"
+        "move onscreen cursor -50% -50%, class:(kitty), title:(kitty-float.*)"
+        "size 60% 60%, class:(kitty), title:(kitty-float.*)"
+        "pin, class:(kitty), title:(kitty-float-pin)"
 
         "float, class:(kitty), title:(cava-float)"
         "size 40% 40%, class:(kitty), title:(cava-float)"
@@ -254,6 +258,7 @@
         # "workspace 1, class:(firefox)"
         # "workspace 2, class:(kitty)"
         "workspace 3, class:(VSCodium)"
+        "workspace 3, class:(Code)"
         "workspace 4, class:(discord)"
         "workspace 5, class:(org.telegram.desktop)"
         # "workspace 6, class:(firefox)"
