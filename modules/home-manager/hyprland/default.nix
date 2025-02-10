@@ -11,6 +11,7 @@
     ./../kitty.nix
     # Daemons and utilities
     ./packages.nix
+    ./hyprlock.nix 
 
     ./waybar.nix
   ];
@@ -58,6 +59,7 @@
       "$terminal" = "kitty";
       "$menu" = "rofi -show drun";
       "$fileManager" = "kitty --title yazi-float yazi";
+      "$visualizer" = "kitty --title cava-float cava";
       "$browser" = "firefox";
       "$logout" = "wlogout";
 
@@ -142,6 +144,7 @@
 	      "$mod, R, exec, $menu"
 	      "$mod, B, exec, $browser"
 	      "$mod, E, exec, $fileManager"
+        "$mod, M, exec, $visualizer"
 	      "$mod, C, killactive"
 	      "$mod, X, exec, $logout"
         "$mod, F, fullscreen"
@@ -224,6 +227,12 @@
         "float, class:(kitty), title:(yazi-float)"
         "move onscreen cursor -50% -50%, class:(kitty), title:(yazi-float)"
         "size 60% 60%, class:(kitty), title:(yazi-float)"
+
+        "float, class:(kitty), title:(cava-float)"
+        "size 40% 40%, class:(kitty), title:(cava-float)"
+        "suppressevent fullscreen maximize, class:(kitty), title:(cava-float)"
+        "pin, class:(kitty), title:(cava-float)"
+        "move 100%-w-15 100%-w-15, class:(kitty), title:(cava-float)"
 
         # Functional Picture-in-Picture
         "float, class:(firefox), title:(Picture-in-Picture)"

@@ -31,6 +31,9 @@
         compact-bar = {
           path = "compact-bar";
         };
+        forgot = {
+          path = "forgot";
+        };
       };
     };
   };

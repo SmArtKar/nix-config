@@ -53,6 +53,15 @@ window>box {
   margin-right: 4px;
 }
 
+#cava {
+  background-color: @base00;
+  border-radius: 4px;
+  padding: 2px 10px 2px 10px;
+  margin-right: 4px;
+  font-family: "bargraph";
+  font-size: 22px;
+}
+
 #custom-playerctl-left {
   background-color: @base00;
   border-radius: 4px 4px 4px 16px;

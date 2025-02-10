@@ -68,7 +68,9 @@ in {
 
       modules-center = [
         "custom/playerctl-left"
+        # "cava"
         "custom/playerctl"
+        # "cava"
         "custom/playerctl-right"
       ];
 
@@ -130,6 +132,18 @@ in {
         on-scroll-down = "playerctl --player playerctld volume .05-";
         on-scroll-up = "playerctl --player playerctld volume .05+";
         tooltip = false;
+      };
+
+      cava = {
+        config = "$HOME/.config/cava/config";
+        data_format = "ascii";
+        ascii_max_range = 9;
+        bars = 8;
+        bar_delimiter = 0;
+        format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+        actions = {
+          on-click-right = "mode";
+        };
       };
 
       "custom/playerctl" = {
