@@ -24,7 +24,7 @@
       ( if config.visual.tui_theme then [
         "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
       ] else [
-        "https://raw.githubusercontent.com/xcruxiex/themes/refs/heads/master/themes-cores/nocturnal.css"
+      
       ])
         ++ 
       [
@@ -32,7 +32,7 @@
       ];
 
       enabledThemes = [
-        # "stylix.theme.css"
+        "stylix.theme.css"
       ];
 
       plugins = {

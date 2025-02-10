@@ -13,6 +13,8 @@
     ./../../modules/home-manager/hyprland
     ./../../modules/home-manager/nixvim
 
+    ./../../modules/home-manager/shell/cava.nix
+
     ./../../modules/home-manager/desktop/rofi.nix
     ./../../modules/home-manager/desktop/stylix.nix
     ./../../modules/home-manager/desktop/telegram.nix

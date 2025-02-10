@@ -81,7 +81,7 @@
       # ---------
 
       decoration = {
-        rounding = 10;
+          rounding = 10;
         active_opacity = 1.0;
 	      inactive_opacity = 0.93;
 	      fullscreen_opacity = 1.0;
@@ -100,10 +100,10 @@
 	        size = 8;
 	        passes = 3;
 	        vibrancy = 0.1696;
-	        ignore_opacity = false;
+	        ignore_opacity = true;
           new_optimizations = true;
           noise = 0.0117;
-          contrast = 1.2;
+          contrast = 1.4;
           brightness = 1;
           xray = false;
 	      };
@@ -192,9 +192,11 @@
 	          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             "$mod CTRL, code:1${toString i}, workspace, ${toString (ws + 5)}"
 	          "$mod CTRL SHIFT, code:1${toString i}, movetoworkspace, ${toString (ws + 5)}"
+            "$mod CTRL, P, moveworkspacetomonitor, ${toString ws} DP-1"
 	        ] else [
             "$mod, code:1${toString i}, workspace, ${toString ws}"
 	          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            "$mod CTRL, P, moveworkspacetomonitor, ${toString ws} eDP-1"
           ]
         )
 	      9)

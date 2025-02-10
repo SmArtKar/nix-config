@@ -11,7 +11,7 @@ let
 in {
   imports =
     [ # Include the results of the hardware scan.
-      ./../../hardware-configuration.nix
+      ./hardware-configuration.nix
       ./../../modules/nixos/hyprland.nix
       ./../../modules/nixos/stylix.nix
       ./../../modules/nixos/agenix.nix

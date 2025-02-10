@@ -8,6 +8,7 @@
   stylix.targets = {
     nixvim.enable = true;
     btop.enable = true;
+    cava.enable = true;
     waybar.enable = false;
     nixcord.enable = false;
     spicetify.enable = false;

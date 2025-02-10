@@ -28,14 +28,20 @@
 
       servers = {
         harper_ls = {
-          #enable = true;
+          enable = true;
           settings = {
-            spell_check = false;
-            avoid_curses = false; # we reclaim slurs in this house
-            sentence_capitalization = false;
-            long_sentences = false;
-            repeated_words = false;
-            matcher = false;
+            harper-ls = {
+            linters = {
+              spell_check = false;
+              sentence_capitalization = false;
+              unclosed_quotes = true;
+              wrong_quotes = false;
+              long_sentences = false;
+              repeated_words = false;
+              matcher = false;
+              avoid_curses = false;
+            };
+            };
           };
         };
         cssls.enable = true;

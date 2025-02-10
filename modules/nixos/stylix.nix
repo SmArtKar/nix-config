@@ -1,17 +1,18 @@
 # stylix.nix
 
-{ pkgs, inputs, lib, ... }:
+{ pkgs, inputs, config, lib, ... }:
 
 # Stylix style manager - core module, some additional stuff is in home-manager modules file
 
 let
-  theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+  #theme = "${pkgs.base16-schemes}/share/themes/tokyo-city-dark.yaml";
+  #theme = ./../../configs/stylix/needles_saturated.yaml;
 
   wallpaper = pkgs.fetchurl {
-    url = "https://4kwallpapers.com/images/wallpapers/frieren-ultrawide-5040x2160-15153.jpg";      
-    sha256 = "sha256-poYxAAsTaP7NEIKAWXIL/RuaOce0KG67ylCC540+pzg=";
-    #url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.uhdpaper.com%2Fwallpaper%2Ffrieren-sousou-no-frieren-588%401%40n-pc-4k.jpg&f=1&nofb=1&ipt=ef9c3ffef72bc634aef5e870e616fe23a242ebf3430adbe38832937c437d47ec&ipo=images";
-    #sha256 = "sha256-a9I609bk92qO5P1H+Jq75DFXbxsk+qwgG3B86ywvAGI=";
+    #url = "https://4kwallpapers.com/images/wallpapers/frieren-ultrawide-5040x2160-15153.jpg";      
+    #sha256 = "sha256-poYxAAsTaP7NEIKAWXIL/RuaOce0KG67ylCC540+pzg=";
+    url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.uhdpaper.com%2Fwallpaper%2Ffrieren-sousou-no-frieren-588%401%40n-pc-4k.jpg&f=1&nofb=1&ipt=ef9c3ffef72bc634aef5e870e616fe23a242ebf3430adbe38832937c437d47ec&ipo=images";
+    sha256 = "sha256-a9I609bk92qO5P1H+Jq75DFXbxsk+qwgG3B86ywvAGI=";
   };
 
 in {
@@ -19,13 +20,19 @@ in {
   options = {
     visual.tui_theme = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
+    };
+
+    visual.colorScheme = lib.mkOption {
+      type = lib.types.path;
+      default = ./../../configs/stylix/needles_saturated.yaml;
     };
   };
   
   config = {
-    visual.tui_theme = false;
-    stylix = {
+    stylix = let
+      theme = config.visual.colorScheme;
+    in {
       enable = true;
       autoEnable = true; 
 
@@ -52,10 +59,10 @@ in {
       '';
 
       opacity = {
-        applications = 1.0;
-        desktop = 1.0;
-        popups = 0.93;
-        terminal = 0.93;
+        applications = 0.95;
+        desktop = 0.95;
+        popups = 0.90;
+        terminal = 0.90;
       };
 
       targets = {

@@ -41,8 +41,8 @@ let
   green = colors.base0B;
   teal = colors.base0C;
   blue = colors.base0D;
-  pink = colors.base0E;
-  purple = colors.base0F;
+  purple = colors.base0E;
+  pink = colors.base0F;
 
   defineColor = name: value: "@define-color ${name} ${value};";
   markup = color: text: "<span color=\"${color}\" style=\"oblique\">${text}</span>";

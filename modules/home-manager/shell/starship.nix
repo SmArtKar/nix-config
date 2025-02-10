@@ -50,17 +50,18 @@ in
 
       palette = "smartkar-stylized";
       palettes.smartkar-stylized = {
-        color_text = colors.base06;
+        color_text = colors.base00;
         color_bg1 = colors.base01;
         color_bg2 = colors.base02;
         color_bg3 = colors.base03;
-        color_blue = "#4c72c4"; #colors.base0D;
+        color_blue = colors.base0D;
         color_aqua = colors.base0C;
-        color_green = "#75ad39"; #colors.base0B;
+        color_green = colors.base0B;
         color_orange = colors.base09;
-        color_purple = "#8766c4"; #colors.base0E;
+        color_purple = colors.base0F;
         color_red = colors.base08;
         color_yellow = colors.base10;
+        color_white = colors.base06;
       };
 
       username = {
@@ -97,77 +98,77 @@ in
         disabled = false;
         time_format = "%R";
         style = "bg:color_bg1";
-        format = "[[  $time ](fg:color_text bg:color_bg1)]($style)";
+        format = "[[  $time ](fg:color_white bg:color_bg1)]($style)";
       };
 
       docker_context = {
         style = "bg:color_bg2";
-        format = "[[ $symbol( $context ) ](bg:color_bg2 fg:color_text)]($style)";
+        format = "[[ $symbol( $context ) ](bg:color_bg2 fg:color_white)]($style)";
       };
 
       conda = {
         style = "bg:color_bg2";
-        format = "[[ $symbol( $environment ) ](bg:color_bg2 fg:color_text)]($style)";
+        format = "[[ $symbol( $environment ) ](bg:color_bg2 fg:color_white)]($style)";
       };
 
       nix_shell = {
         style = "bg:color_bg2";
-        format = "[[ $symbol( $name ) ](bg:color_bg2 fg:color_text)]($style)";
+        format = "[[ $symbol( $name ) ](bg:color_bg2 fg:color_white)]($style)";
       };
 
       c = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       rust = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       golang = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       nodejs = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       php = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       java = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       kotlin = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       haskell = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       python = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       lua = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       zig = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_text)]($style)";
+        format = "[[ $symbol( $version ) ](bg:color_bg3 fg:color_white)]($style)";
       };
 
       character = {
