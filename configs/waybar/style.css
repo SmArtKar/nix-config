@@ -94,6 +94,15 @@ window>box {
   font-size: 14pt;
 }
 
+#custom-power {
+  background-color: @base00;
+  padding: 0px 2px 0px 8px;
+  margin-right: 4px;
+  color: @base0E;
+  font-size: 14pt;
+  border-radius: 4px 16px 4px 16px;
+}
+
 #temperature,
 #mpd,
 #pulseaudio,

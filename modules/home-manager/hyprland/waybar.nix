@@ -83,6 +83,7 @@ in {
         "tray"
         #"hyprland/language"
         "clock"
+        "custom/power"
       ];
 
       "group/launcher" = {
@@ -99,6 +100,12 @@ in {
         on-click = "sh $HOME/.local/bin/scripts/menu";
         on-click-middle = "exec default_wall";
         on-click-right = "exec wallpaper_random";
+      };
+
+      "custom/power" = {
+        format = " ";
+        tooltip = false;
+        on-click = "wlogout -p layer-shell";
       };
 
       user = {
@@ -159,8 +166,8 @@ in {
           "Playing" = "${markup purple ""}";
           "Stopped" = "${markup red ""}";
         };
-        on-scroll-down = "playerctl --player playerctld volume .05-";
-        on-scroll-up = "playerctl --player playerctld volume .05+";
+        on-scroll-up = "playerctld shift";
+        on-scroll-down = "playerctld unshift";
       };
 
       "custom/playerctl-right" = {
@@ -290,6 +297,7 @@ in {
         spacing = 5;
       };
 
+      /*
       "group/power" = {
         drawer = {
           transition-duration = 500;
@@ -330,6 +338,7 @@ in {
         tooltip = false;
         on-click = "reboot";
       };
+      */
     };
 
     style = lib.strings.concatStringsSep "\n"

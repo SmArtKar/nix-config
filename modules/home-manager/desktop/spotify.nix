@@ -39,11 +39,60 @@ in {
       lastfm
       adblock
       hidePodcasts
+
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "fl3xm3ist3r";
+          repo = "spicetifyExtensions/upcomingSong";
+          rev = "5babaccf955724b0de1f0029cbdc328c35f95bf4";
+          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+        };
+        name = "upcomingSong.js";
+      }
+
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "sanoojes";
+          repo = "spicetify-extensions/LibX-Reborn/src";
+          rev = "64195000bceb0fe55a4aa5faafcc51136b5e3046";
+          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+        };
+        name = "LibX-Reborn.js";
+      }
+
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "BitesizedLion";
+          repo = "AnonymizedRadios";
+          rev = "1741f9ba19fe5e20183b3e65210ed6dec3bac17d";
+          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+        };
+        name = "AnonymizedRadios.js";
+      }
+
     ];
 
     enabledCustomApps = with spicePkgs.apps; [
       newReleases
       betterLibrary
+
+      {
+        src = pkgs.fetchurl {
+          url = "https://github.com/Pithaya/spicetify-apps-dist/archive/refs/heads/dist/eternal-jukebox.zip";
+          hash = "sha256-RITnQXU1K6dBtER0ukfivbzRBG5rc/MeWkzOqJaYtYk=";
+        };
+        name = "eternal-jukebox";
+      }
+
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "ohitstom";
+          repo = "spicetify-extensions/toggleDJ";
+          rev = "065887ef6f31c35809a9dab035341606c1153cb5";
+          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+        };
+        name = "toggleDJ.js";
+      }
     ];
 
     enabledSnippets = with spicePkgs.snippets; [

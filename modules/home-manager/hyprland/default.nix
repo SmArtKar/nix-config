@@ -11,7 +11,8 @@
     ./../kitty.nix
     # Daemons and utilities
     ./packages.nix
-    ./hyprlock.nix 
+    ./hyprlock.nix
+    ./wlogout.nix
 
     ./waybar.nix
   ];
@@ -63,7 +64,7 @@
       "$fileManager" = "kitty --title kitty-float yazi";
       "$visualizer" = "kitty --title cava-float cava";
       "$browser" = "firefox";
-      "$logout" = "wlogout";
+      "$logout" = "wlogout -p layer-shell";
 
       # ---------
       #  General

@@ -48,8 +48,4 @@
       ];
     };
   }; 
-
-  programs.wlogout = {
-    enable = true; 
-  };
 }

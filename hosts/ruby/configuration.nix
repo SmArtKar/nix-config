@@ -15,6 +15,7 @@ in {
       ./../../modules/nixos/hyprland.nix
       ./../../modules/nixos/stylix.nix
       ./../../modules/nixos/agenix.nix
+      ./../../modules/nixos/vial.nix
     ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

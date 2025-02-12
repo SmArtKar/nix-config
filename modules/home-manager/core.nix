@@ -40,6 +40,10 @@
     nix-melt
     nix-tree
     nix-output-monitor
+
+    # Lang packages
+    stdenv
+    python311
   ];
   
   # Pride neofetch

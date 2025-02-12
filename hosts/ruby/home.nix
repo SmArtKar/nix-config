@@ -14,6 +14,7 @@
     ./../../modules/home-manager/nixvim
 
     ./../../modules/home-manager/shell/cava.nix
+    ./../../modules/home-manager/shell/discordo.nix
 
     ./../../modules/home-manager/desktop/rofi.nix
     ./../../modules/home-manager/desktop/stylix.nix
@@ -42,6 +43,7 @@
       cascadia-code
       dina-font
       fira-code-symbols
+      fira-sans
       nerd-fonts._0xproto
       nerd-fonts.droid-sans-mono
       nerd-fonts.agave
