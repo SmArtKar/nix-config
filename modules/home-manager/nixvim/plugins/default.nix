@@ -12,6 +12,7 @@
     ./neorg.nix
     ./neotree.nix
     ./starify.nix
+    ./surround.nix
   ];
 
   programs.nixvim = {

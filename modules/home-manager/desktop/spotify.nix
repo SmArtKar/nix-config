@@ -20,6 +20,7 @@ in {
     enable = true;
     experimentalFeatures = true;
     alwaysEnableDevTools = true;
+    windowManagerPatch = true;
 
     enabledExtensions = with spicePkgs.extensions; [
       # Official extensions
@@ -41,22 +42,22 @@ in {
       hidePodcasts
 
       {
-        src = pkgs.fetchFromGitHub {
+        src = "${pkgs.fetchFromGitHub {
           owner = "fl3xm3ist3r";
-          repo = "spicetifyExtensions/upcomingSong";
+          repo = "spicetifyExtensions";
           rev = "5babaccf955724b0de1f0029cbdc328c35f95bf4";
-          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
-        };
+          hash = "sha256-Mb1cKOjO/a4IiqX45WZxk6BK16P5z9o5vJs+d2/By68=";
+        }}/upcomingSong";
         name = "upcomingSong.js";
       }
 
       {
-        src = pkgs.fetchFromGitHub {
+        src = "${pkgs.fetchFromGitHub {
           owner = "sanoojes";
-          repo = "spicetify-extensions/LibX-Reborn/src";
+          repo = "spicetify-extensions";
           rev = "64195000bceb0fe55a4aa5faafcc51136b5e3046";
-          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
-        };
+          hash = "sha256-L2Vz662amzEP0O1aLBqkcajk84M52cTjWLuWvl7D8Mg=";
+        }}/LibX-Reborn/src";
         name = "LibX-Reborn.js";
       }
 
@@ -65,11 +66,20 @@ in {
           owner = "BitesizedLion";
           repo = "AnonymizedRadios";
           rev = "1741f9ba19fe5e20183b3e65210ed6dec3bac17d";
-          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+          hash = "sha256-5zmr/pkMg9Na/LF5Y4U9ftfSKxF1HF3vhIMwLKt1Vr4=";
         };
         name = "AnonymizedRadios.js";
       }
 
+      {
+        src = "${pkgs.fetchFromGitHub {
+          owner = "ohitstom";
+          repo = "spicetify-extensions";
+          rev = "065887ef6f31c35809a9dab035341606c1153cb5";
+          hash = "sha256-OUHCJftUnFm9gFsBhjZbm/ArObSt7l6FDlNoWzsUfsQ=";
+        }}/toggleDJ";
+        name = "toggleDJ.js";
+      }
     ];
 
     enabledCustomApps = with spicePkgs.apps; [
@@ -77,21 +87,12 @@ in {
       betterLibrary
 
       {
-        src = pkgs.fetchurl {
-          url = "https://github.com/Pithaya/spicetify-apps-dist/archive/refs/heads/dist/eternal-jukebox.zip";
-          hash = "sha256-RITnQXU1K6dBtER0ukfivbzRBG5rc/MeWkzOqJaYtYk=";
+        src = builtins.fetchGit {
+          url = "https://github.com/Pithaya/spicetify-apps-dist.git";
+          rev = "63fcfce9bac7de59ca9cd06908c63705c8611625";
+          ref = "dist/eternal-jukebox";
         };
         name = "eternal-jukebox";
-      }
-
-      {
-        src = pkgs.fetchFromGitHub {
-          owner = "ohitstom";
-          repo = "spicetify-extensions/toggleDJ";
-          rev = "065887ef6f31c35809a9dab035341606c1153cb5";
-          hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
-        };
-        name = "toggleDJ.js";
       }
     ];
 
@@ -108,7 +109,38 @@ in {
       pointer
     ];
 
-    theme = lib.mkForce (if config.visual.tui_theme then spicePkgs.themes.text else spicePkgs.themes.comfy);
+    theme = lib.mkForce (if config.visual.tui_theme 
+      then (
+        spicePkgs.themes.text
+      ) else
+        let 
+          comfySrc = pkgs.fetchFromGitHub {
+            owner = "Comfy-Themes";
+            repo = "Spicetify";
+            rev = "b5fbe9f01feed5081b74b678076bed4a59801185";
+            hash = "sha256-OUHCJftUnFm9gFsBhjZbm/ArObSt7l6FDlNoWzsUfsQ=";
+          };
+        in {
+          name = "Comfy";
+          src = comfySrc;
+
+          overwriteAssets = true;
+          
+          requiredExtensions = [
+            {
+              src = "${comfySrc}/Comfy";
+              name = "theme.js";
+            }
+          ];
+
+          extraCommands = ''
+            # remove the auto-update functionality
+            echo "\n" >> ./Extensions/theme.js
+            cat ${"${comfySrc}/Comfy/theme.script.js"} >> ./Extensions/theme.js
+          '';
+        }
+    );
+        #spicePkgs.themes.text else spicePkgs.themes.comfy);
     colorScheme = lib.mkForce "custom";
     customColorScheme = {
       button = colors.base0D;
@@ -117,7 +149,7 @@ in {
       card = colors.base02;
       heart = colors.base0F;
       highlight = colors.base03;
-      highlight-elevated = colors.base04;
+      highlight-elevated = colors.base03;
       main = colors.base01;
       main-elevated = colors.base02;
       main-transition = colors.base01;
