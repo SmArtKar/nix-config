@@ -30,7 +30,6 @@
         github.codespaces
         github.copilot
         github.copilot-chat
-        vscodevim.vim
         esbenp.prettier-vscode
         leonardssh.vscord
         ms-azuretools.vscode-docker

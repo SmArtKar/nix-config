@@ -13,6 +13,7 @@
     ./packages.nix
     ./hyprlock.nix
     ./wlogout.nix
+    ./mako.nix
 
     ./waybar.nix
   ];

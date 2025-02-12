@@ -23,6 +23,9 @@ in {
     enable = true;
     configFile.source = ./../../../configs/nushell/config.nu;
     inherit shellAliases;
+    extraEnv = ''
+      zoxide init nushell | save -f ~/.zoxide.nu
+    '';
   };
   
   programs.bash = {

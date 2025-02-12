@@ -157,7 +157,7 @@ in {
         format = "{icon}<span>{}</span>";
         return-type = "json";
         max-length = 55;
-        exec = "playerctl --player playerctld -a metadata --format '{\"text\": \"  {{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+        exec = "playerctl --player playerctld -a metadata --format '{\"text\": \"  {{artist}} :: {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
         on-click = "playerctl --player playerctld play-pause";
         on-click-middle = "playerctl --player playerctld previous";
         on-click-right = "playerctl --player playerctld next";

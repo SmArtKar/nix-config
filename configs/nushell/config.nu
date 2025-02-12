@@ -121,3 +121,5 @@ def nh-build [host] {
   nh os switch -H $host /etc/nixos -- --accept-flake-config    
 }
 
+source ~/.zoxide.nu
+

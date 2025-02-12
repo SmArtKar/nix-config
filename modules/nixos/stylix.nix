@@ -66,7 +66,7 @@ in {
       };
 
       targets = {
-
+        spicetify.enable = false;
       };
 
       fonts = {

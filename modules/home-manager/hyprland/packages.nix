@@ -15,16 +15,6 @@
     hyprpicker
   ];
   
-  # Mako notification daemon
-  services.mako = {
-    enable = true;
-    sort = "-time";
-
-    extraConfig = "
-      max-history = 100;
-    ";
-  };
-  
   # Automatic timeout
   services.hypridle = {
     enable = true;

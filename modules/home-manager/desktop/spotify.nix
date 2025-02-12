@@ -20,7 +20,6 @@ in {
     enable = true;
     experimentalFeatures = true;
     alwaysEnableDevTools = true;
-    windowManagerPatch = true;
 
     enabledExtensions = with spicePkgs.extensions; [
       # Official extensions
@@ -40,16 +39,6 @@ in {
       lastfm
       adblock
       hidePodcasts
-
-      {
-        src = "${pkgs.fetchFromGitHub {
-          owner = "fl3xm3ist3r";
-          repo = "spicetifyExtensions";
-          rev = "5babaccf955724b0de1f0029cbdc328c35f95bf4";
-          hash = "sha256-Mb1cKOjO/a4IiqX45WZxk6BK16P5z9o5vJs+d2/By68=";
-        }}/upcomingSong";
-        name = "upcomingSong.js";
-      }
 
       {
         src = "${pkgs.fetchFromGitHub {
@@ -113,35 +102,36 @@ in {
       then (
         spicePkgs.themes.text
       ) else
-        let 
-          comfySrc = pkgs.fetchFromGitHub {
-            owner = "Comfy-Themes";
-            repo = "Spicetify";
-            rev = "b5fbe9f01feed5081b74b678076bed4a59801185";
-            hash = "sha256-OUHCJftUnFm9gFsBhjZbm/ArObSt7l6FDlNoWzsUfsQ=";
-          };
-        in {
-          name = "Comfy";
-          src = comfySrc;
+      {
+        name = "Comfy";
+        src = "${pkgs.fetchFromGitHub {
+          owner = "Comfy-Themes";
+          repo = "Spicetify";
+          rev = "b5fbe9f01feed5081b74b678076bed4a59801185";
+          hash = "sha256-clq21blMlQVrt6h0tW3wdSMNAUPaOo10XExWofimK1o=";
+        }}/Comfy";
 
-          overwriteAssets = true;
-          
-          requiredExtensions = [
-            {
-              src = "${comfySrc}/Comfy";
-              name = "theme.js";
-            }
-          ];
+        overwriteAssets = true;
+        
+        requiredExtensions = [
+          {
+            src = "${pkgs.fetchFromGitHub {
+              owner = "Comfy-Themes";
+              repo = "Spicetify";
+              rev = "b5fbe9f01feed5081b74b678076bed4a59801185";
+              hash = "sha256-clq21blMlQVrt6h0tW3wdSMNAUPaOo10XExWofimK1o=";
+            }}/Comfy";
+            name = "theme.js";
+          }
+        ];
 
-          extraCommands = ''
-            # remove the auto-update functionality
-            echo "\n" >> ./Extensions/theme.js
-            cat ${"${comfySrc}/Comfy/theme.script.js"} >> ./Extensions/theme.js
-          '';
-        }
+        extraCommands = ''
+          cat ${./../../../configs/spicetify/theme.script.js} >> ./Extensions/theme.js
+        '';
+      }
     );
-        #spicePkgs.themes.text else spicePkgs.themes.comfy);
-    colorScheme = lib.mkForce "custom";
+
+    colorScheme = lib.mkForce "Comfy";
     customColorScheme = {
       button = colors.base0D;
       button-active = colors.base0E;

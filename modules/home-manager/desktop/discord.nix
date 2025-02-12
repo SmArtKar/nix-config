@@ -62,7 +62,6 @@
         gameActivityToggle.enable = true;
         messageLinkEmbeds.enable = true;
         noBlockedMessages.enable = true;
-        noSystemBadge.enable = true;
         noTypingAnimation.enable = true;
         noUnblockToJump.enable = true;
         onePingPerDM.enable = true;
