@@ -21,6 +21,11 @@ in {
     textColor = "${colors.base06}";
     width = 320;
     extraConfig = ''
+    format=<b>%s</b>\n%b
+
+    [grouped]
+    format=<b>%s (%g)</b>\n%b
+
     [urgency=low]
     border-color=${colors.base0D}C8
 

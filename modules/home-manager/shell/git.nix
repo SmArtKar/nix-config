@@ -20,7 +20,7 @@
     
     extraConfig = {
       credential = {
-        helper = "manager";
+        helper = "manager store";
         "https://github.com".username = "SmArtKar";
         credentialStore = "cache";
       };
