@@ -14,6 +14,7 @@
     # Misc
     tldr
     neo-cowsay
+    thefuck
 
     # Tooling
     wget # File retrieval

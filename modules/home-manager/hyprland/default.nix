@@ -4,7 +4,44 @@
 
 # Hyprland WM
 
-{
+let
+  colorNames = [
+    "base00"
+    "base01"
+    "base02"
+    "base03"
+    "base04"
+    "base05"
+    "base06"
+    "base07"
+    "base08"
+    "base09"
+    "base0A"
+    "base0B"
+    "base0C"
+    "base0D"
+    "base0E"
+    "base0F"
+  ];
+
+  defineColor = name: value: "@define-color ${name} ${value};";
+
+  colors = config.lib.stylix.colors.withHashtag;
+  hyprswitchConfig = pkgs.writeText "hyprswitchConfig.css" (lib.strings.concatStringsSep "\n"
+    (
+      # Convert the colors attribute set to GTK color declarations
+      builtins.map (color: defineColor color colors.${color}) colorNames
+    )
+    +
+    (builtins.readFile ./../../../configs/hyprswitch/style.css)
+    +
+    # Stylix monospace font
+    ''
+      * {
+        font-family: "${config.visual.hyprswitchFont}";
+      }
+    '');
+in {
   imports = 
   [
     # Kitty is required by default
@@ -22,6 +59,7 @@
     hyprshot
     xdg-desktop-portal-hyprland
     hyprpolkitagent
+    inputs.pyprland.packages.x86_64-linux.pyprland
   ];
 
   wayland.windowManager.hyprland = {
@@ -30,6 +68,8 @@
       exec-once = [
         "mako"
         "waybar --bar main --log-level error"
+        "hyprswitch init --show-title --size-factor 4 --workspaces-per-row 5 --custom-css ${hyprswitchConfig}"
+        "pypr --config ${./../../../configs/pyprland/config.toml}"
       ]; 
 
       # --------
@@ -148,6 +188,7 @@
 	      "$mod SHIFT, Q, exec, $terminalFloat"
 	      "$mod, R, exec, $menu"
 	      "$mod, B, exec, $browser"
+	      "$mod SHIFT, B, exec, $browser --private-window"
 	      "$mod, E, exec, $fileManager"
         "$mod, M, exec, $visualizer"
 	      "$mod, C, killactive"
@@ -190,6 +231,15 @@
         # 10th workspace
         "$mod, 0, workspace, 10"
         "$mod SHIFT, 0, movetoworkspace, 10"
+
+        # Scratchpad
+        "$mod, grave, togglespecialworkspace"
+        "$mod SHIFT, grave, movetoworkspace, special"
+        "$mod CTRL, Q, exec, pypr toggle term"
+
+        # Hyprswitch
+        "ALT, tab, exec, hyprswitch gui --filter-current-monitor --mod-key alt_l --key tab --close mod-key-release --reverse-key=key=grave && hyprswitch dispatch"
+        "ALT, grave, exec, hyprswitch gui --filter-current-monitor --mod-key alt_l --key tab --close mod-key-release --reverse-key=key=grave && hyprswitch dispatch -r"
       ]
       ++ (
         # Workspace binds

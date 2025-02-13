@@ -1,0 +1,37 @@
+copy_command "wl-copy"
+copy_on_select false
+default_layout "compact"
+
+plugins {
+	compact-bar {
+		path "compact-bar"
+	}
+	forgot {
+		path "forgot"
+	}
+	status-bar {
+		path "status-bar"
+	}
+	strider {
+		path "strider"
+	}
+	tab-bar {
+		path "tab-bar"
+	}
+}
+
+keybinds {
+  normal {
+    bind "Ctrl Left" { MoveFocus "Left"; }
+    bind "Ctrl Right" { MoveFocus "Right"; }
+    bind "Ctrl Up" { MoveFocus "Up"; }
+    bind "Ctrl Down" { MoveFocus "Down"; }
+  }
+}
+
+ui {
+	pane_frames {
+		rounded_corners true
+	}
+}
+

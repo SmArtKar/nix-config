@@ -13,6 +13,7 @@
     wf-recorder
     wl-clipboard
     hyprpicker
+    inputs.hyprswitch.packages.x86_64-linux.default
   ];
   
   # Automatic timeout

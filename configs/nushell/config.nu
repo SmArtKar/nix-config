@@ -122,4 +122,4 @@ def nh-build [host] {
 }
 
 source ~/.zoxide.nu
-
+alias fuck = thefuck $"(history | last 1 | get command | get 0)"

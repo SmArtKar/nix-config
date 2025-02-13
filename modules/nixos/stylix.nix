@@ -44,6 +44,11 @@ in {
       type = lib.types.str;
       default = config.stylix.fonts.sansSerif.name;
     };
+
+    visual.hyprswitchFont = lib.mkOption {
+      type = lib.types.str;
+      default = config.stylix.fonts.sansSerif.name;
+    };
   };
   
   config = {
