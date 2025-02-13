@@ -15,6 +15,13 @@ let
     sha256 = "sha256-a9I609bk92qO5P1H+Jq75DFXbxsk+qwgG3B86ywvAGI=";
   };
 
+  baseValues = [
+    "0" "1" "2" "3"
+    "4" "5" "6" "7"
+    "8" "9" "A" "B"
+    "C" "D" "E" "F"
+  ];
+
 in {
   
   options = {
@@ -48,24 +55,10 @@ in {
 
       polarity = "dark";
       base16Scheme = theme;
-      image = pkgs.runCommand "lutgen-background.png" { } ''
-        COLOR0=$(${pkgs.yq}/bin/yq -r .palette.base00 ${theme})
-        COLOR1=$(${pkgs.yq}/bin/yq -r .palette.base01 ${theme})
-        COLOR2=$(${pkgs.yq}/bin/yq -r .palette.base02 ${theme})
-        COLOR3=$(${pkgs.yq}/bin/yq -r .palette.base03 ${theme})
-        COLOR4=$(${pkgs.yq}/bin/yq -r .palette.base04 ${theme})
-        COLOR5=$(${pkgs.yq}/bin/yq -r .palette.base05 ${theme})
-        COLOR6=$(${pkgs.yq}/bin/yq -r .palette.base06 ${theme})
-        COLOR7=$(${pkgs.yq}/bin/yq -r .palette.base07 ${theme})
-        COLOR8=$(${pkgs.yq}/bin/yq -r .palette.base08 ${theme})
-        COLOR9=$(${pkgs.yq}/bin/yq -r .palette.base09 ${theme})
-        COLORA=$(${pkgs.yq}/bin/yq -r .palette.base0A ${theme})
-        COLORB=$(${pkgs.yq}/bin/yq -r .palette.base0B ${theme})
-        COLORC=$(${pkgs.yq}/bin/yq -r .palette.base0C ${theme})
-        COLORD=$(${pkgs.yq}/bin/yq -r .palette.base0D ${theme})
-        COLORE=$(${pkgs.yq}/bin/yq -r .palette.base0E ${theme})
-        COLORF=$(${pkgs.yq}/bin/yq -r .palette.base0F ${theme})
-        ${pkgs.lutgen}/bin/lutgen apply -o $out ${wallpaper} -- $COLOR0 $COLOR1 $COLOR2 $COLOR3 $COLOR4 $COLOR5 $COLOR6 $COLOR7 $COLOR8 $COLOR9 $COLORA $COLORB $COLORC $COLORD $COLORE $COLORF
+
+      image = pkgs.runCommand "lutgen_background.png" { } ''
+        ${builtins.concatStringsSep "\n" (builtins.map (value: "COLOR${value}=$(${pkgs.yq}/bin/yq -r .palette.base0${value} ${theme})") baseValues)}
+        ${pkgs.lutgen}/bin/lutgen apply -o $out ${wallpaper} -- ${builtins.concatStringsSep " " (builtins.map (value: "$COLOR${value}") baseValues)} 
       '';
 
       opacity = {
@@ -80,17 +73,14 @@ in {
       };
 
       fonts = {
-        /*
         serif = {
-          package = pkgs.nerd-fonts.inconsolata;
-          name = "Inconsolata Nerd Font";
+          package = pkgs.noto-fonts;
+          name = "Noto Serif";
         };
-
-        */
-
+        
         sansSerif = {
-          package = pkgs.nerd-fonts.arimo;
-          name = "Fira Sans";
+          package = pkgs.noto-fonts;
+          name = "Noto Sans";
         };
 
         monospace = {

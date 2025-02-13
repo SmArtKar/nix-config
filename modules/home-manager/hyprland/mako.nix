@@ -33,6 +33,9 @@ in {
     border-color=${colors.base08}C8
     default-timeout=0
     
+    [category=spotify]
+    default-timeout=3000
+
     [category=mpd]
     group-by=category
 

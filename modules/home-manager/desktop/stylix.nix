@@ -13,5 +13,6 @@
     nixcord.enable = false;
     spicetify.enable = false;
     mako.enable = false;
+    firefox.enable = false;
   };
 }
