@@ -47,6 +47,10 @@ let
   defineColor = name: value: "@define-color ${name} ${value};";
   markup = color: text: "<span color=\"${color}\" style=\"oblique\">${text}</span>";
 in {
+  home.packages = with pkgs; [
+    libappindicator
+  ];
+
   programs.waybar = {
     enable = true;
     
@@ -352,7 +356,7 @@ in {
     # Stylix monospace font
     ''
       * {
-        font-family: "${config.stylix.fonts.monospace.name}";
+        font-family: "${config.visual.waybarFont}";
       }
     ''; 
   };

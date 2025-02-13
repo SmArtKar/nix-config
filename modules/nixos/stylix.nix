@@ -18,7 +18,7 @@ let
 in {
   
   options = {
-    visual.tui_theme = lib.mkOption {
+    visual.tuiTheme = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
@@ -26,6 +26,16 @@ in {
     visual.colorScheme = lib.mkOption {
       type = lib.types.path;
       default = ./../../configs/stylix/needles_saturated.yaml;
+    };
+
+    visual.waybarFont = lib.mkOption {
+      type = lib.types.string;
+      default = config.stylix.fonts.monospace.name;
+    };
+
+    visual.makoFont = lib.mkOption {
+      type = lib.types.string;
+      default = config.stylix.fonts.sansSerif.name;
     };
   };
   
@@ -76,11 +86,12 @@ in {
           name = "Inconsolata Nerd Font";
         };
 
+        */
+
         sansSerif = {
           package = pkgs.nerd-fonts.arimo;
-          name = "Arimo Nerd Font";
+          name = "Fira Sans";
         };
-        */
 
         monospace = {
           package = pkgs.nerd-fonts.jetbrains-mono;

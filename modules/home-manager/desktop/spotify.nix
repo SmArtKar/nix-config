@@ -98,7 +98,7 @@ in {
       pointer
     ];
 
-    theme = lib.mkForce (if config.visual.tui_theme 
+    theme = (if config.visual.tuiTheme 
       then (
         spicePkgs.themes.text
       ) else
@@ -131,7 +131,7 @@ in {
       }
     );
 
-    colorScheme = lib.mkForce "Comfy";
+    colorScheme = "Comfy";
     customColorScheme = {
       button = colors.base0D;
       button-active = colors.base0E;

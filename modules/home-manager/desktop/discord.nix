@@ -21,7 +21,7 @@
       frameless = true;
       transparent = true;
       themeLinks = 
-      ( if config.visual.tui_theme then [
+      ( if config.visual.tuiTheme then [
         "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
       ] else [
       

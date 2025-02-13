@@ -12,5 +12,6 @@
     waybar.enable = false;
     nixcord.enable = false;
     spicetify.enable = false;
+    mako.enable = false;
   };
 }
