@@ -36,12 +36,12 @@ in {
     };
 
     visual.waybarFont = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = config.stylix.fonts.monospace.name;
     };
 
     visual.makoFont = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = config.stylix.fonts.sansSerif.name;
     };
   };
