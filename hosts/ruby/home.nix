@@ -22,6 +22,7 @@
     ./../../modules/home-manager/desktop/discord.nix
     ./../../modules/home-manager/desktop/spotify.nix
     ./../../modules/home-manager/desktop/vscode.nix
+    ./../../modules/home-manager/desktop/gaming.nix
   ];
 
   config = {

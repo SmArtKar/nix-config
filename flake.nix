@@ -46,6 +46,7 @@
    
     hyprswitch.url = "github:h3rmt/hyprswitch/release";
     pyprland.url = "github:hyprland-community/pyprland";
+    millennium.url = "github:Sk7Str1p3/millennium/nix-experimental";
     # Commit lock on agenix
     agenix.url = "github:ryantm/agenix/e600439ec4c273cf11e06fe4d9d906fb98fa097c";
   };

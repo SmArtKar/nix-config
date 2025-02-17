@@ -131,5 +131,20 @@ window>box {
 }
 
 tooltip {
-  background: @base00;
+  background-color: @base00;
+  border: none;
+}
+
+#tray menu {
+  background-color: @base00;
+  border: none;
+  transition-duration: 0.1s;
+}
+
+#tray menu menuitem {
+  transition-duration: 0.1s;
+}
+
+#tray menu menuitem:hover {
+  background-color: @base02;
 }

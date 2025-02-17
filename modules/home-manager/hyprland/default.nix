@@ -60,6 +60,10 @@ in {
     xdg-desktop-portal-hyprland
     hyprpolkitagent
     inputs.pyprland.packages.x86_64-linux.pyprland
+    hyprpicker
+    slurp
+    grim
+    libnotify
   ];
 
   wayland.windowManager.hyprland = {
@@ -67,6 +71,7 @@ in {
     settings = {
       exec-once = [
         "mako"
+        "systemctl --user start hyprpolkitagent"
         "waybar --bar main --log-level error"
         "hyprswitch init --show-title --size-factor 4 --workspaces-per-row 5 --custom-css ${hyprswitchConfig}"
         "pypr --config ${./../../../configs/pyprland/config.toml}"
@@ -197,6 +202,8 @@ in {
         "$mod, S, pseudo"
         "$mod, Space, togglefloating"
         "$mod, P, exec, pkill waybar || waybar --bar main"
+        "$mod CTRL, P, exec, ~/.local/bin/scripts/picker"
+        "$mod CTRL, M, exec, playerctl --player playerctld next"
 
         # Screenshots
         ", Print, exec, hyprshot -m output -o ~/Pictures/Screenshots -- imv"
@@ -322,19 +329,33 @@ in {
         # Transparent dark mode apps look... questionable
         "opacity 1.0 override 0.95 override, class:(discord)"
         "opacity 1.0 override 0.95 override, class:(org.telegram.desktop)"
+
+        # Games
+        "fullscreen, class:^steam_app\d+$"
+        "maximize, class:^steam_app\d+$"
+        "monitor DP-1, class:^steam_app_\d+$"
+        "workspace 10, class:^steam_app_\d+$"
+        "fullscreen, title:(.*Big Picture.*)"
+        "maximize, title:(.*Big Picture.*)"
+        "monitor DP-1, title:(.*Big Picture.*)"
+        "workspace 10, title:(.*Big Picture.*)"
+        "float, class:(steam), title:(Special Offers)"
+        "float, class:(steam), title:(^(?!.*Steam).*$)"
       ];
 
       workspace = [
-        "1,monitor:DP-1,default:true,persistant:true"
-        "2,monitor:DP-1,default:true,persistant:true"
-        "3,monitor:DP-1,default:true,persistant:true"
-        "4,monitor:DP-1,default:true,persistant:true"
-        "5,monitor:DP-1,default:true,persistant:true"
-        "6,monitor:eDP-1,default:true,persistant:true"
-        "7,monitor:eDP-1,default:true,persistant:true"
-        "8,monitor:eDP-1"
-        "9,monitor:eDP-1"
-        "10,monitor:eDP-1"
+        "1, monitor:DP-1, default:true, persistant:true"
+        "2, monitor:DP-1, default:true, persistant:true"
+        "3, monitor:DP-1, default:true, persistant:true"
+        "4, monitor:DP-1, default:true, persistant:true"
+        "5, monitor:DP-1, default:true, persistant:true"
+        "6, monitor:eDP-1, default:true, persistant:true"
+        "7, monitor:eDP-1, default:true, persistant:true"
+        "8, monitor:eDP-1"
+        "9, monitor:eDP-1"
+        # Workspace 10 holds games
+        "10, monitor:DP-1"
+        "10, border:false, rounding:false"
       ];
 
       gestures = {

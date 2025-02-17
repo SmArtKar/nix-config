@@ -14,7 +14,7 @@ in {
     borderColor = "${colors.base0E}C8";
     borderRadius = 4;
     borderSize = 2;
-    defaultTimeout = 15000;
+    defaultTimeout = 5000;
     margin = "10,10,5";
     font = "${config.visual.makoFont} 11";
     progressColor = "source ${colors.base0E}C8";

@@ -67,7 +67,7 @@ in {
         # "group/launcher"
         # "temperature"
         "hyprland/workspaces"
-        # "hyprland/window"
+        "hyprland/window"
       ];
 
       modules-center = [
@@ -128,12 +128,23 @@ in {
 
       "hyprland/window" = {
         format = "{initialTitle}";
+        #format = "{class} {title}";
         rewrite = {
           "kitty" = "󰄛 Kitty";
           "Mozilla Firefox" = "󰈹 Firefox";
           "Telegram.*" = " Telegram";
           "Discord" = " Discord";
           "Spotify.*" = " Spotify";
+          "Steam" = " Steam";
+          "VSCodium" = " VSCodium";
+          ".*[cC]ode.*" = "󰘐 VSCode";
+          "Lutris" = " Lutris";
+          "Heroic Games Launcher" = " Heroic";
+          ".*[mM]ango.*" = " MangoHUD";
+          "Bottles" = " Bottles";
+          "Tor Browser" = " Tor";
+          "qBittorrent.*" = "󰰜 QBit";
+          "Mumble" = " Mumble";
         };
       };
 
@@ -287,11 +298,11 @@ in {
           weeks-pos = "right";
           on-scroll = 1;
           format = {
-            months =   "<span color='#ffead3'><b>{}</b></span>";
-            days =     "<span color='#ecc6d9'><b>{}</b></span>";
-            weeks =    "<span color='#99ffdd'><b>W{}</b></span>";
-            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-            today =    "<span color='#ff6699'><b><u>{}</u></b></span>";
+            months =   "<span color='${surface2}'><b>{}</b></span>";
+            days =     "<span color='${green}'><b>{}</b></span>";
+            weeks =    "<span color='${teal}'><b>W{}</b></span>";
+            weekdays = "<span color='${blue}'><b>{}</b></span>";
+            today =    "<span color='${purple}'><b><u>{}</u></b></span>";
           };
         };
       };

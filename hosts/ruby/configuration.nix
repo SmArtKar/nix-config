@@ -17,6 +17,7 @@ in {
       ./../../modules/nixos/agenix.nix
       ./../../modules/nixos/vial.nix
       ./../../modules/nixos/tor.nix
+      ./../../modules/nixos/gaming.nix
     ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -122,6 +123,16 @@ in {
     };
   };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+    ];
+  };
+
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -157,6 +168,10 @@ in {
   };
 
   system.stateVersion = "24.11";
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   # Automatic updating
   system.autoUpgrade = {
