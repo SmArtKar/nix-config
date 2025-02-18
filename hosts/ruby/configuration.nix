@@ -224,6 +224,5 @@ in {
   environment.sessionVariables = {
     FLAKE = "/etc/nixos";
     NIX_REMOTE = "daemon";
-    GSK_RENDERER = "ngl";
   };
 }
