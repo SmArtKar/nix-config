@@ -128,7 +128,8 @@ in {
 
       "hyprland/window" = {
         format = "{initialTitle}";
-        #format = "{class} {title}";
+        #format = "{class}::{title}";
+        #format = "{initialClass}::{initialTitle}";
         rewrite = {
           "kitty" = "󰄛 Kitty";
           "Mozilla Firefox" = "󰈹 Firefox";
@@ -174,7 +175,7 @@ in {
         max-length = 55;
         exec = "playerctl --player playerctld -a metadata --format '{\"text\": \"  {{artist}} :: {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
         on-click = "playerctl --player playerctld play-pause";
-        on-click-middle = "playerctl --player playerctld previous";
+        on-click-middle = "spotifycli --playpause";
         on-click-right = "playerctl --player playerctld next";
         format-icons = {
           "Paused" = "${markup blue ""}";

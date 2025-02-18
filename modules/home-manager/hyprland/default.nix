@@ -132,7 +132,7 @@ in {
       # ---------
 
       decoration = {
-          rounding = 10;
+        rounding = 10;
         active_opacity = 1.0;
 	      inactive_opacity = 0.93;
 	      fullscreen_opacity = 1.0;
@@ -199,7 +199,6 @@ in {
 	      "$mod, C, killactive"
 	      "$mod, X, exec, $logout"
         "$mod, F, fullscreen"
-        "$mod, S, pseudo"
         "$mod, Space, togglefloating"
         "$mod, P, exec, pkill waybar || waybar --bar main"
         "$mod CTRL, P, exec, ~/.local/bin/scripts/picker"
@@ -256,7 +255,7 @@ in {
             "$mod, code:1${toString i}, workspace, ${toString ws}"
 	          "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
             "$mod CTRL, code:1${toString i}, workspace, ${toString (ws + 5)}"
-	          "$mod CTRL SHIFT, code:1${toString i}, movetoworkspace, ${toString (ws + 5)}"
+	          "$mod CTRL SHIFT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
             "$mod CTRL, P, moveworkspacetomonitor, ${toString ws} DP-1"
 	        ] else [
             "$mod, code:1${toString i}, workspace, ${toString ws}"
@@ -331,10 +330,10 @@ in {
         "opacity 1.0 override 0.95 override, class:(org.telegram.desktop)"
 
         # Games
-        "fullscreen, class:^steam_app\d+$"
-        "maximize, class:^steam_app\d+$"
-        "monitor DP-1, class:^steam_app_\d+$"
-        "workspace 10, class:^steam_app_\d+$"
+        "fullscreen, class:^steam_app.*"
+        "maximize, class:^steam_app.*"
+        "monitor DP-1, class:^steam_app.*"
+        "workspace 10, class:^steam_app.*"
         "fullscreen, title:(.*Big Picture.*)"
         "maximize, title:(.*Big Picture.*)"
         "monitor DP-1, title:(.*Big Picture.*)"

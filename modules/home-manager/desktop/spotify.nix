@@ -12,6 +12,10 @@ in {
     ./../../nixos/stylix.nix
   ];
 
+  home.packages = with pkgs; [
+    spotify-cli-linux
+  ];
+  
   programs.spicetify =
   let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};

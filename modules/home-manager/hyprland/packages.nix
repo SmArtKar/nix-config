@@ -38,5 +38,9 @@
         }
       ];
     };
-  }; 
+  };
+
+  services.kdeconnect = {
+    enable = true;
+  };
 }

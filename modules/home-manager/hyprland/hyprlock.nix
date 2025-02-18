@@ -18,6 +18,15 @@
         blur_size = 8;
       };
 
+      login ={
+        user = "smartkar";
+      };
+
+      login-session = {
+        name = "hyprland";
+        exec = "hyprland";
+      };
+
       input-field = {
         shadow_passes = 2;
         rounding = 16;

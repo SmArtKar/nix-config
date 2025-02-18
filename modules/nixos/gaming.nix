@@ -23,7 +23,9 @@
     protonup-qt
     bubblewrap
     bottles
-    #inputs.millennium.packages.x86_64-linux.default
+    wineWowPackages.staging
+    winetricks
+    inputs.millennium.packages.x86_64-linux.default
   ];
 
   programs.gamemode.enable = true;

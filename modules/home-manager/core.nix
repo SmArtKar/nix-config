@@ -34,6 +34,10 @@
     caddy # Webserver
     lutgen # Background themer
     yq # YAML/TOML processing
+    cabextract
+    geckodriver
+    sambaFull
+    dmidecode
 
     # Nix tooling
     nix-index

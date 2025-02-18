@@ -22,6 +22,17 @@ in {
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
+  nix.daemonIOSchedClass = lib.mkDefault "idle";
+  nix.daemonCPUSchedPolicy = lib.mkDefault "idle";
+  nix.settings.max-jobs = 16;
+  services.hercules-ci-agent = {
+    settings.concurrentTasks = 4;
+  };
+  # put the service in top-level slice
+  # so that it's lower than system and user slice overall
+  # instead of only being lower in system slice
+  systemd.services.nix-daemon.serviceConfig.Slice = "-.slice";
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -53,12 +64,21 @@ in {
     variant = "";
   };
 
+  services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.deviceSection = ''
+    Option "DRI" "2"
+    Option "TearFree" "true"
+  '';
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
+  security.pam.services.swaylock = {};
+  security.pam.services.hyprlock = {};
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -113,11 +133,19 @@ in {
           from = 8060;
           to = 8090;
         }
+        {
+          from = 1714; 
+          to = 1764;
+        }
       ];
       allowedUDPPortRanges = [
         {
           from = 8060;
           to = 8090;
+        }
+        {
+          from = 1714; 
+          to = 1764;
         }
       ];
     };
@@ -130,6 +158,10 @@ in {
       intel-media-driver
       intel-vaapi-driver
       libvdpau-va-gl
+      vaapiIntel
+      vaapiVdpau
+      intel-ocl
+      intel-compute-runtime
     ];
   };
 
@@ -159,6 +191,7 @@ in {
 
   services.flatpak.enable = true;
   nixpkgs.config.allowUnfree = true;
+  services.gvfs.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -190,5 +223,7 @@ in {
 
   environment.sessionVariables = {
     FLAKE = "/etc/nixos";
+    NIX_REMOTE = "daemon";
+    GSK_RENDERER = "ngl";
   };
 }

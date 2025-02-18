@@ -23,6 +23,7 @@
     ./../../modules/home-manager/desktop/spotify.nix
     ./../../modules/home-manager/desktop/vscode.nix
     ./../../modules/home-manager/desktop/gaming.nix
+    ./../../modules/home-manager/desktop/thunar.nix
   ];
 
   config = {

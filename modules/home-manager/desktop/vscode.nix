@@ -117,6 +117,12 @@
           version = "1.0.1";
           sha256 = "KwS69LhhmT/6J35JOsxvScUMGkYptAt1VofPem3qwA0=";
         }
+        {
+          name = "vscode-tgstation-test-adapter";
+          publisher = "Donkie";
+          version = "1.2.3";
+          sha256 = "O/8D3FAKH3KpY/H0io136M/u4Vv61hkr2LyHnPhtgzQ=";
+        }
       ];
 
       userSettings = lib.mkForce {

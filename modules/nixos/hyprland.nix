@@ -8,14 +8,6 @@
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
-    /*
-    settings = {
-      daemon = {
-        AutomaticLogin = "smartkar";
-        AutomaticLoginEnable = true;
-      };
-    };
-    */
   };
 
   xdg.portal = {
@@ -26,8 +18,8 @@
       common.default = ["gtk"];
       hyprland.default = ["gtk" "hyprland"];
     };
-  }; 
-
+  };
+  
   # Hyprland package needs to be enabled in config for mandatory components, actual config is done via home
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;

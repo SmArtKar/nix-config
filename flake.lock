@@ -938,11 +938,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1739648192,
-        "narHash": "sha256-qiC9YnaM3uSvcWmHJS6yXeZhamNmj45pI15r9NOhP+w=",
+        "lastModified": 1739797668,
+        "narHash": "sha256-Bwf4XloTzOw71Uu1jal9m0tB7LdYptWG/rAfpbssrf0=",
         "owner": "Sk7Str1p3",
         "repo": "millennium",
-        "rev": "1253765e51b9118cd8fcc52b61d5e9631d4687b3",
+        "rev": "57228d1f4e006b070a77ea66ce627bc20e7850e7",
         "type": "github"
       },
       "original": {
