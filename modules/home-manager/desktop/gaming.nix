@@ -7,6 +7,4 @@
     lutris
     protonup-ng
   ];
-
-  services.xembed-sni-proxy.enable = true;
 }
