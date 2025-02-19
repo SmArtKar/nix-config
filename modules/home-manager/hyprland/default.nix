@@ -313,14 +313,16 @@ in {
         "pin, class:(org.telegram.desktop), title:(^(?!.*Telegram).*$)"
 
         # Workspace ordering
-        # "workspace 1, class:(firefox)"
-        # "workspace 2, class:(kitty)"
-        "workspace 3, class:(VSCodium)"
-        "workspace 3, class:(Code)"
+        # "workspace 1, class:(kitty)"
+        # "workspace 2, class:(firefox)"
+        # "workspace 3, class:(VSCodium)"
+        # "workspace 3, class:(Code)"
         "workspace 4, class:(discord)"
         "workspace 5, class:(org.telegram.desktop)"
         # "workspace 6, class:(firefox)"
         "workspace 7, class:(Spotify)"
+        "workspace 9, class:(net.lutris.Lutris)"
+        "workspace 9, class:(steam), title:(Steam)"
 
         # Opacity rules
         # Per stylix config, terminals already have reduced opacity
@@ -354,7 +356,6 @@ in {
         "9, monitor:eDP-1"
         # Workspace 10 holds games
         "10, monitor:DP-1"
-        "10, border:false, rounding:false"
       ];
 
       gestures = {
