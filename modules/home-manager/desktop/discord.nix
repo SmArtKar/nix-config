@@ -44,7 +44,7 @@
         };
         anonymiseFileNames.enable = true;
         betterGifAltText.enable = true;
-        betterSettings.enable = true;
+        # betterSettings.enable = true;
         betterUploadButton.enable = true;
         clearURLs.enable = true;
         dearrow = {
@@ -73,10 +73,12 @@
         };
         reverseImageSearch.enable = true;
         showConnections.enable = true;
+        /*
         spotifyControls = {
           enable = true;
           useSpotifyUris = true;
         };
+        */
         spotifyCrack.enable = true;
         validUser.enable = true;
         volumeBooster.enable = true;

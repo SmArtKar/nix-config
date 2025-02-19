@@ -87,6 +87,16 @@ in {
         };
         name = "eternal-jukebox";
       }
+
+      {
+        src = pkgs.fetchFromGitHub {
+          owner = "ECE49595-Team-6";
+          repo = "EnhancifyInstall";
+          rev = "5d40a98a378a778b6be5f8b68eb60a6884ba43b0";
+          hash = "sha256-A2SeKr/b77vd+u61omJlWk4ohIsKoWchLugoulpdK3A=";
+        };
+        name = "Enhancify";
+      }
     ];
 
     enabledSnippets = with spicePkgs.snippets; [

@@ -16,13 +16,15 @@
       proton-ge-bin
     ];
   };
-
-  environment.systemPackages = with pkgs; [
+  
+  environment.systemPackages = with pkgs; let 
+    bottlesFree = bottles.override { removeWarningPopup = true; };
+  in [
     heroic
     mumble
     protonup-qt
     bubblewrap
-    bottles
+    bottlesFree
     wineWowPackages.staging
     winetricks
     inputs.millennium.packages.x86_64-linux.default

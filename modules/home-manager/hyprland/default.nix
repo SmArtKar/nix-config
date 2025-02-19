@@ -108,6 +108,7 @@ in {
       "$terminalFloatPin" = "kitty --title kitty-float-pin";
       "$menu" = "rofi -show drun";
       "$fileManager" = "kitty --title kitty-float yazi";
+      "$fileManagerAlt" = "thunar";
       "$visualizer" = "kitty --title cava-float cava";
       "$browser" = "firefox";
       "$logout" = "wlogout -p layer-shell";
@@ -195,6 +196,7 @@ in {
 	      "$mod, B, exec, $browser"
 	      "$mod SHIFT, B, exec, $browser --private-window"
 	      "$mod, E, exec, $fileManager"
+	      "$mod SHIFT, E, exec, $fileManagerAlt"
         "$mod, M, exec, $visualizer"
 	      "$mod, C, killactive"
 	      "$mod, X, exec, $logout"
