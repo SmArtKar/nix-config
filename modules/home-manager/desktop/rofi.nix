@@ -58,14 +58,14 @@ in {
     theme = lib.mkForce {
       "*" = {
         bg = mkLiteral "${colors.base00}";
-        bg-alt = mkLiteral "${colors.base09}";
-        foreground = mkLiteral "${colors.base01}";
-        selected = mkLiteral "${colors.base08}";
-        active = mkLiteral "${colors.base0B}";
+        bg-alt = mkLiteral "${colors.base0E}";
+        foreground = mkLiteral "${colors.base02}";
+        selected = mkLiteral "${colors.base0F}";
+        active = mkLiteral "${colors.base0D}";
         text-selected = mkLiteral "${colors.base00}";
-        text-color = mkLiteral "${colors.base05}";
-        border-color = mkLiteral "${colors.base0F}";
-        urgent = mkLiteral "${colors.base0E}";
+        text-color = mkLiteral "${colors.base07}";
+        border-color = mkLiteral "${colors.base0E}";
+        urgent = mkLiteral "${colors.base08}";
         font = "JetBrainsMono Nerd Font Mono 12";
       };
       "window" = {
@@ -76,7 +76,7 @@ in {
         spacing = mkLiteral "0px";
         border = mkLiteral "2px";
         border-color = "@border-color";
-        border-radius = mkLiteral "20px";
+        border-radius = mkLiteral "16px";
         background-color = mkLiteral "@bg";
       };
       "mainbox" = {
@@ -93,8 +93,8 @@ in {
         enabled = true;
         padding = mkLiteral "10px 10px 200px 10px";
         margin = mkLiteral "10px";
-        background-color = mkLiteral "transparent";
-        border-radius = "25px";
+        background-color = mkLiteral "@urgent";
+        border-radius = "16px 16px 0px 0px";
         orientation = mkLiteral "horizontal";
         children = map mkLiteral [
           "entry"
@@ -151,7 +151,7 @@ in {
       "button" = {
         width = mkLiteral "5%";
         padding = mkLiteral "12px";
-        border-radius = mkLiteral "12px";
+        border-radius = mkLiteral "8px";
         background-color = mkLiteral "@text-selected";
         text-color = mkLiteral "@text-color";
         cursor = mkLiteral "pointer";
@@ -171,7 +171,7 @@ in {
         enabled = true;
         spacing = mkLiteral "10px";
         padding = mkLiteral "10px";
-        border-radius = mkLiteral "12px";
+        border-radius = mkLiteral "8px";
         background-color = mkLiteral "transparent";
         cursor = mkLiteral "pointer";
       };
@@ -230,7 +230,7 @@ in {
       };
       "textbox" = {
         padding = mkLiteral "12px";
-        border-radius = mkLiteral "10px";
+        border-radius = mkLiteral "8px";
         background-color = mkLiteral "@bg-alt";
         text-color = mkLiteral "@bg";
         vertical-align = mkLiteral "0.5";
@@ -238,7 +238,7 @@ in {
       };
       "error-message" = {
         padding = mkLiteral "12px";
-        border-radius = mkLiteral "20px";
+        border-radius = mkLiteral "12px";
         background-color = mkLiteral "@bg-alt";
         text-color = mkLiteral "@bg";
       };

@@ -203,13 +203,13 @@ in {
         "$mod, F, fullscreen"
         "$mod, Space, togglefloating"
         "$mod, P, exec, pkill waybar || waybar --bar main"
-        "$mod CTRL, P, exec, ~/.local/bin/scripts/picker"
+        "$mod SHIFT, P, exec, hyprpicker -a"
         "$mod CTRL, M, exec, playerctl --player playerctld next"
 
         # Screenshots
-        ", Print, exec, hyprshot -m output -o ~/Pictures/Screenshots -- imv"
-        "SHIFT, Print, exec, hyprshot -m window -o ~/Pictures/Screenshots -- imv"
-        "CTRL, Print, exec, hyprshot -m region -o ~/Pictures/Screenshots --imv"
+        ", Print, exec, hyprshot -z -m output -o ~/Pictures/Screenshots -- imv"
+        "SHIFT, Print, exec, hyprshot -z -m window -o ~/Pictures/Screenshots -- imv"
+        "CTRL, Print, exec, hyprshot -z -m region -o ~/Pictures/Screenshots --imv"
 
         # Focus movement
 	      "$mod, left, movefocus, l"

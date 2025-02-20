@@ -4,7 +4,30 @@
 
 # Fancy discord client, configured via nixcord
 
-{ 
+let
+  colorNames = [
+    "base00"
+    "base01"
+    "base02"
+    "base03"
+    "base04"
+    "base05"
+    "base06"
+    "base07"
+    "base08"
+    "base09"
+    "base0A"
+    "base0B"
+    "base0C"
+    "base0D"
+    "base0E"
+    "base0F"
+  ];
+
+  # Colors used in the markup
+  colors = config.lib.stylix.colors.withHashtag;
+  defineColor = name: value: "  --${name}: ${value};";
+in {
   imports = [
     inputs.nixcord.homeManagerModules.nixcord
     ./../../nixos/stylix.nix
@@ -18,11 +41,12 @@
     enable = true;
     discord.vencord.unstable = true;
     config = {
+      useQuickCss = true;
       frameless = true;
       transparent = true;
       themeLinks = 
       ( if config.visual.tuiTheme then [
-        "https://raw.githubusercontent.com/refact0r/system24/refs/heads/main/theme/flavors/spotify-text.theme.css"
+        "https://refact0r.github.io/system24/theme/system24.theme.css"
       ] else [
       
       ])
@@ -44,7 +68,7 @@
         };
         anonymiseFileNames.enable = true;
         betterGifAltText.enable = true;
-        # betterSettings.enable = true;
+        betterSettings.enable = true;
         betterUploadButton.enable = true;
         clearURLs.enable = true;
         dearrow = {
@@ -73,12 +97,10 @@
         };
         reverseImageSearch.enable = true;
         showConnections.enable = true;
-        /*
         spotifyControls = {
           enable = true;
           useSpotifyUris = true;
         };
-        */
         spotifyCrack.enable = true;
         validUser.enable = true;
         volumeBooster.enable = true;
@@ -87,6 +109,15 @@
         webScreenShareFixes.enable = true;
       };
     };
+
+    quickCss = ''
+    :root {
+    ${lib.strings.concatStringsSep "\n" (
+        # Convert the colors attribute set to GTK color declarations
+        builtins.map (color: defineColor color colors.${color}) colorNames
+      )}
+    }
+    ''+ builtins.readFile ./../../../configs/discord/theme.css;
 
     extraConfig = {
       openasar = {
