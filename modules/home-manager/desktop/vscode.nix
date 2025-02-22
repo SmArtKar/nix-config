@@ -43,7 +43,7 @@
         tamasfe.even-better-toml
         visualstudioexptteam.vscodeintellicode
         vscode-icons-team.vscode-icons
-      ] ++ 
+      ] ++
         pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "dmi-editor";
@@ -183,6 +183,32 @@
           }
         ];
         "terminal.integrated.fontLigatures" = true;
+        #"dreammaker.byondPath" = ["/home/smartkar/.local/share/wineprefixes/BYOND/drive_c/Program Files/BYOND"];
+        "dreammaker.objectTreePane" = true;
+        "vim.cursorStylePerMode.insert" = "line-thin";
+        "vim.cursorStylePerMode.normal" = "underline";
+        "vim.cursorStylePerMode.replace" = "line";
+        "vim.cursorStylePerMode.visual" = "line";
+        "vim.cursorStylePerMode.visualblock" = "line";
+        "vim.cursorStylePerMode.visualline" = "line";
+        "vim.highlightedyank.color" = "rgba(250, 250, 250, 0.5)";
+        "vim.handleKeys"= {
+          "<C-w>" = false;
+          "<C-f>" = false;
+          "<C-h>" = false;
+        };
+        "vim.normalModeKeyBindings" = [
+          {
+            "before" = ["Tab"];
+            "commands" = ["workbench.action.nextEditor"];
+          }
+          {
+            "before" = ["<Shift+Tab>"];
+            "commands" = ["workbench.action.previousEditor"];
+          }
+        ];
+        "vim.overrideCopy" = false;
+        "vim.useSystemClipboard" = true;
       };
 
       keybindings = [
@@ -233,6 +259,90 @@
         {
           "key" = "ctrl+shift+d";
           "command" = "workbench.action.closeAuxiliaryBar";
+        }
+        {
+          "key" = "ctrl+pagedown";
+          "command" = "workbench.action.nextEditor";
+        }
+        {
+          "key" = "ctrl+pagedown";
+          "command" = "-workbench.action.nextEditor";
+        }
+        {
+          "key" = "ctrl+pageup";
+          "command" = "workbench.action.previousEditor";
+        }
+        {
+          "key" = "ctrl+pageup";
+          "command" = "-workbench.action.previousEditor";
+        }
+        {
+          "key" = "ctrl+shift+tab";
+          "command" = "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup";
+          "when" = "!activeEditorGroupEmpty";
+        }
+        {
+          "key" = "ctrl+shift+tab";
+          "command" = "-workbench.action.quickOpenNavigatePreviousInEditorPicker";
+          "when" = "inEditorsPicker && inQuickOpen";
+        }
+        {
+          "key" = "ctrl+k ctrl+left";
+          "command" = "-workbench.action.focusLeftGroup";
+        }
+        {
+          "key" = "ctrl+k ctrl+right";
+          "command" = "-workbench.action.focusRightGroup";
+        }
+        {
+          "key" = "shift+alt+home";
+          "command" = "breadcrumbs.focusPrevious";
+          "when" = "breadcrumbsActive && breadcrumbsVisible";
+        }
+        {
+          "key" = "ctrl+left";
+          "command" = "-breadcrumbs.focusPrevious";
+          "when" = "breadcrumbsActive && breadcrumbsVisible";
+        }
+        {
+          "key" = "shift+alt+home";
+          "command" = "breadcrumbs.focusPreviousWithPicker";
+          "when" = "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused";
+        }
+        {
+          "key" = "ctrl+left";
+          "command" = "-breadcrumbs.focusPreviousWithPicker";
+          "when" = "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused";
+        }
+        {
+          "key" = "shift+alt+end";
+          "command" = "breadcrumbs.focusNext";
+          "when" = "breadcrumbsActive && breadcrumbsVisible";
+        }
+        {
+          "key" = "ctrl+right";
+          "command" = "-breadcrumbs.focusNext";
+          "when" = "breadcrumbsActive && breadcrumbsVisible";
+        }
+        {
+          "key" = "shift+alt+end";
+          "command" = "breadcrumbs.focusNextWithPicker";
+          "when" = "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused";
+        }
+        {
+          "key" = "ctrl+right";
+          "command" = "-breadcrumbs.focusNextWithPicker";
+          "when" = "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused";
+        }
+        {
+          "key" = "ctrl+tab";
+          "command" = "extension.vim_shift+tab";
+          "when" = "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'";
+        }
+        {
+          "key" = "shift+tab";
+          "command" = "-extension.vim_shift+tab";
+          "when" = "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'";
         }
       ];
     };

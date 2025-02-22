@@ -14,6 +14,7 @@ in {
 
   home.packages = with pkgs; [
     spotify-cli-linux
+    mpdris2
   ];
   
   programs.spicetify =

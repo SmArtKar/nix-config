@@ -683,28 +683,23 @@ button.button__67645 {
 }
 
 .mentioned__5126c {
-  background-color: color-mix(in hsl, var(--base0F), var(--base00) 90%);
+  background-color: color-mix(in hsl, var(--base0D), var(--base00) 90%);
   transition: background-color 0.1s;
 }
 
 .mentioned__5126c:hover,
 .mentioned__5126c.selected__5126c,
 .mouse-mode.full-motion .message__5126c.mentioned__5126c:hover {
-  background-color: color-mix(in hsl, var(--base0F), var(--base00) 94%);
+  background-color: color-mix(in hsl, var(--base0D), var(--base00) 94%);
 }
 
 .mentioned__5126c::before {
-  background-color: var(--base0F);
+  background-color: var(--base0D);
 }
 
 .wrapper__6e9f8.selected__6e9f8 .childWrapper__6e9f8,
 .wrapper__6e9f8:hover .childWrapper__6e9f8 {
   background-color: var(--base0E);
-}
-
-.isUnread__908e2,
-.unreadPill__908e2 {
-  border-color: var(--base08);
 }
 
 .mainCard_f369db {
