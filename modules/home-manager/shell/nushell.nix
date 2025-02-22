@@ -14,6 +14,8 @@ let
     zj = "zellij";
     nb = "nh-build";
     lg = "lazygit";
+    zip = "tar -cvhf";
+    unzip = "tar -xf";
   };
 in {
   # Does not work in nushell, needs to be manually assigned down the line

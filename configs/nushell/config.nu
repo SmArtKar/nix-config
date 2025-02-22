@@ -121,5 +121,14 @@ def nh-build [host] {
   nh os switch -H $host /etc/nixos -- --accept-flake-config    
 }
 
+# Quick zip tool
+def qzip [file] {
+  let filelist = $file | split row " "
+  let filename = $filelist | get (($filelist | length) - 1)
+  let filelist2 = $filename | split row "/"
+  let filename2 = $filelist2 | get (($filelist2 | length) - 1)
+  tar -cvhf $'($filename2).zip' $file
+}
+
 source ~/.zoxide.nu
 alias fuck = thefuck $"(history | last 1 | get command | get 0)"

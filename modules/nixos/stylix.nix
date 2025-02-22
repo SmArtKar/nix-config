@@ -40,6 +40,11 @@ in {
       default = config.stylix.fonts.monospace.name;
     };
 
+    visual.rofiFont = lib.mkOption {
+      type = lib.types.str;
+      default = "Montserrat"; #"Roboto";
+    };
+
     visual.makoFont = lib.mkOption {
       type = lib.types.str;
       default = config.stylix.fonts.sansSerif.name;

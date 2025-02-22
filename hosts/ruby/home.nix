@@ -16,7 +16,6 @@
     ./../../modules/home-manager/shell/cava.nix
     ./../../modules/home-manager/shell/discordo.nix
 
-    ./../../modules/home-manager/desktop/rofi.nix
     ./../../modules/home-manager/desktop/stylix.nix
     ./../../modules/home-manager/desktop/telegram.nix
     ./../../modules/home-manager/desktop/discord.nix

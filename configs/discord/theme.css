@@ -683,14 +683,14 @@ button.button__67645 {
 }
 
 .mentioned__5126c {
-  background-color: color-mix(in hsl, var(--base0D), var(--base00) 90%);
+  background-color: color-mix(in oklab, var(--base0E), var(--base00) 90%);
   transition: background-color 0.1s;
 }
 
 .mentioned__5126c:hover,
 .mentioned__5126c.selected__5126c,
 .mouse-mode.full-motion .message__5126c.mentioned__5126c:hover {
-  background-color: color-mix(in hsl, var(--base0D), var(--base00) 94%);
+  background-color: color-mix(in oklab, var(--base0E), var(--base00) 94%);
 }
 
 .mentioned__5126c::before {
@@ -706,3 +706,8 @@ button.button__67645 {
   background: var(--base01);
   border: 2px solid var(--base03);
 }
+
+.outer_bf1984 {
+  background-color: var(--base01)
+}
+

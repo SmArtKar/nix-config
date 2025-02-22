@@ -51,6 +51,7 @@ in {
     ./hyprlock.nix
     ./wlogout.nix
     ./mako.nix
+    ./rofi.nix
 
     ./waybar.nix
   ];

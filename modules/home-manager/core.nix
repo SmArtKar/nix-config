@@ -49,6 +49,8 @@
     # Lang packages
     stdenv
     python311
+    rustc
+    cargo
   ];
   
   # Pride neofetch
