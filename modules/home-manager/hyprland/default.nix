@@ -40,7 +40,8 @@ let
       * {
         font-family: "${config.visual.hyprswitchFont}";
       }
-    '');
+    ''
+  );
 in {
   imports = 
   [
@@ -108,10 +109,12 @@ in {
       "$terminalFloat" = "kitty --title kitty-float";
       "$terminalFloatPin" = "kitty --title kitty-float-pin";
       "$menu" = "rofi -show drun";
+      "$cliphist" = "rofi-cliphist";
+      "$pass" = "$HOME/.local/bin/scripts/keepassxc -d /home/smartkar/secrets/master.kdbx";
       "$fileManager" = "kitty --title kitty-float yazi";
       "$fileManagerAlt" = "thunar";
       "$visualizer" = "kitty --title cava-float cava";
-      "$browser" = "firefox";
+      "$browser" = "zen";
       "$logout" = "wlogout -p layer-shell";
 
       # ---------
@@ -194,6 +197,8 @@ in {
 	      "$mod, Q, exec, $terminal"
 	      "$mod SHIFT, Q, exec, $terminalFloat"
 	      "$mod, R, exec, $menu"
+	      "$mod CTRL, C, exec, $cliphist"
+	      "$mod SHIFT, R, exec, $pass"
 	      "$mod, B, exec, $browser"
 	      "$mod SHIFT, B, exec, $browser --private-window"
 	      "$mod, E, exec, $fileManager"

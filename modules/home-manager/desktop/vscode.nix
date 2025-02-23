@@ -185,6 +185,8 @@
         "terminal.integrated.fontLigatures" = true;
         #"dreammaker.byondPath" = ["/home/smartkar/.local/share/wineprefixes/BYOND/drive_c/Program Files/BYOND"];
         "dreammaker.objectTreePane" = true;
+        
+        "dreammaker.langserverPath" = "${pkgs.callPackage ./../../../packages/spacemandmm {}}/bin/dm-langserver";
         "vim.cursorStylePerMode.insert" = "line-thin";
         "vim.cursorStylePerMode.normal" = "underline";
         "vim.cursorStylePerMode.replace" = "line";

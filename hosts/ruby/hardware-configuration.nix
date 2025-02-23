@@ -23,6 +23,11 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+  
+  fileSystems."/run/media/smartkar/Windows 10" = {
+    device = "/dev/nvme0n1p4";
+    fsType = "ntfs3";
+  };
 
   swapDevices = [ ];
 

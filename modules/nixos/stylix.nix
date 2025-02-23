@@ -42,7 +42,8 @@ in {
 
     visual.rofiFont = lib.mkOption {
       type = lib.types.str;
-      default = "Montserrat"; #"Roboto";
+      # default = "Montserrat";
+      default = config.stylix.fonts.sansSerif.name;
     };
 
     visual.makoFont = lib.mkOption {
@@ -73,7 +74,7 @@ in {
 
       opacity = {
         applications = 0.95;
-        desktop = 0.95;
+        desktop = 0.90;
         popups = 0.90;
         terminal = 0.90;
       };

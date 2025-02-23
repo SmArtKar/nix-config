@@ -49,6 +49,14 @@
     millennium.url = "github:Sk7Str1p3/millennium/nix-experimental";
     # Commit lock on agenix
     agenix.url = "github:ryantm/agenix/e600439ec4c273cf11e06fe4d9d906fb98fa097c";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    rofi-tools = {
+      url = "github:szaffarano/rofi-tools";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

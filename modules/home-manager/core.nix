@@ -16,6 +16,8 @@
     neo-cowsay
     thefuck
 
+    inputs.zen-browser.packages."${system}".default
+
     # Tooling
     wget # File retrieval
     gnupg # OpenPGP
@@ -38,6 +40,7 @@
     geckodriver
     sambaFull
     dmidecode
+    keepassxc
 
     # Nix tooling
     nix-index

@@ -13,8 +13,15 @@
     wf-recorder
     wl-clipboard
     hyprpicker
+    bluez
+    bluez-tools
     inputs.hyprswitch.packages.x86_64-linux.default
+    inputs.rofi-tools.packages.${pkgs.system}.rofi-cliphist
   ];
+
+  services.cliphist = {
+    enable = true;
+  };
   
   # Automatic timeout
   services.hypridle = {

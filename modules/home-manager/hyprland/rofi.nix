@@ -56,19 +56,16 @@ in {
       run-shell--command = "{terminal} -e {cmd}";
       run-display-format = "{name}";
     };
-
+    
     theme = lib.mkForce {
       "*" = {
         bg = mkLiteral "${colors.base00}AF";
         bg-alt = mkLiteral "${colors.base06}E6";
         bg-entry = mkLiteral "${colors.base00}AF";
-        # bg-entry = mkLiteral "${colors.base06}E6";
         text = mkLiteral "${colors.base06}E6";
         text-alt = mkLiteral "${colors.base01}E6";
         text-entry = mkLiteral "${colors.base06}E6";
-        # text-entry = mkLiteral "${colors.base01}E6";
         text-placeholder = mkLiteral "${colors.base04}E6";
-        # text-placeholder = mkLiteral "${colors.base03}E6";
         font = "${config.visual.rofiFont} 12";
         margin = mkLiteral "0px";
         padding = mkLiteral "0px";
@@ -86,7 +83,7 @@ in {
         orientation = mkLiteral "vertical";
         cursor = "default";
         
-        border-radius = mkLiteral "8px";
+        border-radius = mkLiteral "12px";
         enabled = mkLiteral "true";
         width = mkLiteral "640px";
         background-color = mkLiteral "transparent";
@@ -96,7 +93,7 @@ in {
         enabled = mkLiteral "true";
         background-color = mkLiteral "transparent";
         orientation = mkLiteral "vertical";
-        children = map mkLiteral [ "inputbar" "listbox" ];
+        children = map mkLiteral [ "inputbar" "message" "listbox" ];
       };
 
       listbox = {
